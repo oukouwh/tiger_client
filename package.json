@@ -1,8 +1,8 @@
 {
-  "name": "tiger-web-app",
+  "name": "web-app",
   "version": "0.0.1-SNAPSHOT",
   "private": true,
-  "description": "Description for tiger_web_app",
+  "description": "Description for web_app",
   "license": "UNLICENSED",
   "scripts": {
     "build": "npm run webapp:prod --",

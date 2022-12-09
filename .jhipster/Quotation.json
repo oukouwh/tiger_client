@@ -1,0 +1,124 @@
+{
+  "applications": "*",
+  "changelogDate": "20221209071558",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "quotation",
+  "fields": [
+    {
+      "fieldName": "quotationNo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "quotationName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "quotationDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "workStart",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "workEnd",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deliveryItems",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deliveryDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "acceptanceDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "paymentsTerms",
+      "fieldType": "PayMaster",
+      "fieldTypeJavadoc": "支払条件マスタ\\nA 翌月末払い\\nB 翌々月10日払い\\nC 翌々月15日払い\\nD 翌々月20日払い\\nE 翌々月末払い\\n",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "A,B,C,D,E"
+    },
+    {
+      "fieldName": "payFlag",
+      "fieldType": "PayFlag",
+      "fieldTypeJavadoc": "精算フラグ  Y あり　N　なし",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Y,N"
+    },
+    {
+      "fieldName": "quotationExpirationDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "max"],
+      "fieldValidateRulesMax": "999999999"
+    },
+    {
+      "fieldName": "customerCharge",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accuracy",
+      "fieldType": "OrderAccuracy",
+      "fieldValues": "A,B,C,D,E"
+    },
+    {
+      "fieldName": "mailSendDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "postSendDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "sendFlag",
+      "fieldType": "SendFlag",
+      "fieldTypeJavadoc": "A 未送信\\nB 送信中\\nC 发送成功\\nD 送信失败",
+      "fieldValues": "A,B,C,D"
+    },
+    {
+      "fieldName": "salesStaff",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "salesOffice",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "updateCount",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Quotation",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "quotationitem",
+      "otherEntityRelationshipName": "quotation",
+      "relationshipName": "quotationItem",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

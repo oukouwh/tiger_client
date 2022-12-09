@@ -1,12 +1,15 @@
 {
   "global": {
-    "title": "Tiger_web_app",
+    "title": "Web_app",
     "browsehappy": "<strong>古い</strong>ブラウザーが使われています。より良い体験を得るために<a href=\"http://browsehappy.com/?locale=en\">ブラウザをアップデート</a>してください。",
     "menu": {
       "home": "ホーム",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "エンティティ",
+        "quotation": "Quotation",
+        "quotationitem": "Quotationitem",
+        "customer": "Customer",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,239 @@
+<div>
+  <h2 id="page-heading" data-cy="QuotationHeading">
+    <span jhiTranslate="webAppApp.quotation.home.title">Quotations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="webAppApp.quotation.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quotation"
+        [routerLink]="['/quotation/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="webAppApp.quotation.home.createLabel"> Create a new Quotation </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="quotations?.length === 0">
+    <span jhiTranslate="webAppApp.quotation.home.notFound">No Quotations found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="quotations && quotations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationNo">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.quotationNo">Quotation No</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationName">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.quotationName">Quotation Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.quotationDate">Quotation Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="workStart">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.workStart">Work Start</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="workEnd">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.workEnd">Work End</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deliveryItems">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.deliveryItems">Delivery Items</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deliveryDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.deliveryDate">Delivery Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="acceptanceDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.acceptanceDate">Acceptance Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="paymentsTerms">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.paymentsTerms">Payments Terms</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="payFlag">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.payFlag">Pay Flag</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationExpirationDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.quotationExpirationDate">Quotation Expiration Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalAmount">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.totalAmount">Total Amount</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="customerCharge">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.customerCharge">Customer Charge</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="accuracy">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.accuracy">Accuracy</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="mailSendDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.mailSendDate">Mail Send Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="postSendDate">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.postSendDate">Post Send Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="sendFlag">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.sendFlag">Send Flag</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="salesStaff">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.salesStaff">Sales Staff</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="salesOffice">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.salesOffice">Sales Office</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updateCount">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotation.updateCount">Update Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quotation of quotations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/quotation', quotation.id, 'view']">{{ quotation.id }}</a>
+          </td>
+          <td>{{ quotation.quotationNo }}</td>
+          <td>{{ quotation.quotationName }}</td>
+          <td>{{ quotation.quotationDate | formatMediumDate }}</td>
+          <td>{{ quotation.workStart | formatMediumDate }}</td>
+          <td>{{ quotation.workEnd | formatMediumDate }}</td>
+          <td>{{ quotation.deliveryItems }}</td>
+          <td>{{ quotation.deliveryDate | formatMediumDate }}</td>
+          <td>{{ quotation.acceptanceDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'webAppApp.PayMaster.' + quotation.paymentsTerms }}">{{ quotation.paymentsTerms }}</td>
+          <td jhiTranslate="{{ 'webAppApp.PayFlag.' + quotation.payFlag }}">{{ quotation.payFlag }}</td>
+          <td>{{ quotation.quotationExpirationDate | formatMediumDate }}</td>
+          <td>{{ quotation.totalAmount }}</td>
+          <td>{{ quotation.customerCharge }}</td>
+          <td jhiTranslate="{{ 'webAppApp.OrderAccuracy.' + quotation.accuracy }}">{{ quotation.accuracy }}</td>
+          <td>{{ quotation.mailSendDate | formatMediumDate }}</td>
+          <td>{{ quotation.postSendDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'webAppApp.SendFlag.' + quotation.sendFlag }}">{{ quotation.sendFlag }}</td>
+          <td>{{ quotation.salesStaff }}</td>
+          <td>{{ quotation.salesOffice }}</td>
+          <td>{{ quotation.updateCount }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/quotation', quotation.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/quotation', quotation.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(quotation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="quotations && quotations.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

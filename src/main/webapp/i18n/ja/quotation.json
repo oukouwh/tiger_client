@@ -1,0 +1,44 @@
+{
+  "webAppApp": {
+    "quotation": {
+      "home": {
+        "title": "Quotations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Quotation を追加",
+        "createOrEditLabel": "Quotationを追加または編集",
+        "notFound": "No Quotations found"
+      },
+      "created": "A new Quotation is created with identifier {{ param }}",
+      "updated": "A Quotation is updated with identifier {{ param }}",
+      "deleted": "A Quotation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Quotation {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Quotation"
+      },
+      "id": "ID",
+      "quotationNo": "Quotation No",
+      "quotationName": "Quotation Name",
+      "quotationDate": "Quotation Date",
+      "workStart": "Work Start",
+      "workEnd": "Work End",
+      "deliveryItems": "Delivery Items",
+      "deliveryDate": "Delivery Date",
+      "acceptanceDate": "Acceptance Date",
+      "paymentsTerms": "Payments Terms",
+      "payFlag": "Pay Flag",
+      "quotationExpirationDate": "Quotation Expiration Date",
+      "totalAmount": "Total Amount",
+      "customerCharge": "Customer Charge",
+      "accuracy": "Accuracy",
+      "mailSendDate": "Mail Send Date",
+      "postSendDate": "Post Send Date",
+      "sendFlag": "Send Flag",
+      "salesStaff": "Sales Staff",
+      "salesOffice": "Sales Office",
+      "updateCount": "Update Count",
+      "quotationItem": "Quotation Item"
+    }
+  }
+}

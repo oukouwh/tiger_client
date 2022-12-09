@@ -1,0 +1,35 @@
+{
+  "webAppApp": {
+    "quotationitem": {
+      "home": {
+        "title": "Quotationitems",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Quotationitem",
+        "createOrEditLabel": "创建或编辑 Quotationitem",
+        "notFound": "No Quotationitems found"
+      },
+      "created": "Quotationitem {{ param }} 创建成功",
+      "updated": "Quotationitem {{ param }} 更新成功",
+      "deleted": "Quotationitem {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Quotationitem {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Quotationitem"
+      },
+      "id": "ID",
+      "quotationNo": "Quotation No",
+      "quotationItemNo": "Quotation Item No",
+      "workerName": "Worker Name",
+      "standardPrice": "Standard Price",
+      "count": "Count",
+      "upperLimitHour": "Upper Limit Hour",
+      "lowerLimitHour": "Lower Limit Hour",
+      "additionalPrice": "Additional Price",
+      "deductionPrice": "Deduction Price",
+      "memo": "Memo",
+      "updateCount": "Update Count",
+      "quotation": "Quotation"
+    }
+  }
+}

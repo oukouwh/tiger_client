@@ -30,7 +30,7 @@ module.exports = async (config, options, targetOptions) => {
         },
       }),
       new WebpackNotifierPlugin({
-        title: 'Tiger Web App',
+        title: 'Web App',
         contentImage: path.join(__dirname, 'logo-jhipster.png'),
       })
     );

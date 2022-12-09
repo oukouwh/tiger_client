@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="quotationitem">
+      <h2 data-cy="quotationitemDetailsHeading"><span jhiTranslate="webAppApp.quotationitem.detail.title">Quotationitem</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ quotationitem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.quotationNo">Quotation No</span></dt>
+        <dd>
+          <span>{{ quotationitem.quotationNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.quotationItemNo">Quotation Item No</span></dt>
+        <dd>
+          <span>{{ quotationitem.quotationItemNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.workerName">Worker Name</span></dt>
+        <dd>
+          <span>{{ quotationitem.workerName }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.standardPrice">Standard Price</span></dt>
+        <dd>
+          <span>{{ quotationitem.standardPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.count">Count</span></dt>
+        <dd>
+          <span>{{ quotationitem.count }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.upperLimitHour">Upper Limit Hour</span></dt>
+        <dd>
+          <span>{{ quotationitem.upperLimitHour }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.lowerLimitHour">Lower Limit Hour</span></dt>
+        <dd>
+          <span>{{ quotationitem.lowerLimitHour }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.additionalPrice">Additional Price</span></dt>
+        <dd>
+          <span>{{ quotationitem.additionalPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.deductionPrice">Deduction Price</span></dt>
+        <dd>
+          <span>{{ quotationitem.deductionPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.memo">Memo</span></dt>
+        <dd>
+          <span>{{ quotationitem.memo }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.updateCount">Update Count</span></dt>
+        <dd>
+          <span>{{ quotationitem.updateCount }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotationitem.quotation">Quotation</span></dt>
+        <dd>
+          <div *ngIf="quotationitem.quotation">
+            <a [routerLink]="['/quotation', quotationitem.quotation.id, 'view']">{{ quotationitem.quotation.quotationNo }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/quotationitem', quotationitem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

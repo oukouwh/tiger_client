@@ -1,0 +1,35 @@
+{
+  "webAppApp": {
+    "quotationitem": {
+      "home": {
+        "title": "Quotationitems",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Quotationitem を追加",
+        "createOrEditLabel": "Quotationitemを追加または編集",
+        "notFound": "No Quotationitems found"
+      },
+      "created": "A new Quotationitem is created with identifier {{ param }}",
+      "updated": "A Quotationitem is updated with identifier {{ param }}",
+      "deleted": "A Quotationitem is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Quotationitem {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Quotationitem"
+      },
+      "id": "ID",
+      "quotationNo": "Quotation No",
+      "quotationItemNo": "Quotation Item No",
+      "workerName": "Worker Name",
+      "standardPrice": "Standard Price",
+      "count": "Count",
+      "upperLimitHour": "Upper Limit Hour",
+      "lowerLimitHour": "Lower Limit Hour",
+      "additionalPrice": "Additional Price",
+      "deductionPrice": "Deduction Price",
+      "memo": "Memo",
+      "updateCount": "Update Count",
+      "quotation": "Quotation"
+    }
+  }
+}

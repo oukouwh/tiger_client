@@ -1,0 +1,375 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-quotationitem-heading"
+        data-cy="QuotationitemCreateUpdateHeading"
+        jhiTranslate="webAppApp.quotationitem.home.createOrEditLabel"
+      >
+        Create or edit a Quotationitem
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.quotationNo" for="field_quotationNo">Quotation No</label>
+          <input
+            type="text"
+            class="form-control"
+            name="quotationNo"
+            id="field_quotationNo"
+            data-cy="quotationNo"
+            formControlName="quotationNo"
+          />
+          <div *ngIf="editForm.get('quotationNo')!.invalid && (editForm.get('quotationNo')!.dirty || editForm.get('quotationNo')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('quotationNo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.quotationItemNo" for="field_quotationItemNo"
+            >Quotation Item No</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="quotationItemNo"
+            id="field_quotationItemNo"
+            data-cy="quotationItemNo"
+            formControlName="quotationItemNo"
+          />
+          <div
+            *ngIf="
+              editForm.get('quotationItemNo')!.invalid &&
+              (editForm.get('quotationItemNo')!.dirty || editForm.get('quotationItemNo')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('quotationItemNo')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('quotationItemNo')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.workerName" for="field_workerName">Worker Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="workerName"
+            id="field_workerName"
+            data-cy="workerName"
+            formControlName="workerName"
+          />
+          <div *ngIf="editForm.get('workerName')!.invalid && (editForm.get('workerName')!.dirty || editForm.get('workerName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('workerName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.standardPrice" for="field_standardPrice">Standard Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="standardPrice"
+            id="field_standardPrice"
+            data-cy="standardPrice"
+            formControlName="standardPrice"
+          />
+          <div
+            *ngIf="
+              editForm.get('standardPrice')!.invalid && (editForm.get('standardPrice')!.dirty || editForm.get('standardPrice')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('standardPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('standardPrice')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 999999999 }"
+            >
+              This field cannot be more than 999999999.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('standardPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.count" for="field_count">Count</label>
+          <input type="number" class="form-control" name="count" id="field_count" data-cy="count" formControlName="count" />
+          <div *ngIf="editForm.get('count')!.invalid && (editForm.get('count')!.dirty || editForm.get('count')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('count')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('count')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.upperLimitHour" for="field_upperLimitHour"
+            >Upper Limit Hour</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="upperLimitHour"
+            id="field_upperLimitHour"
+            data-cy="upperLimitHour"
+            formControlName="upperLimitHour"
+          />
+          <div
+            *ngIf="
+              editForm.get('upperLimitHour')!.invalid && (editForm.get('upperLimitHour')!.dirty || editForm.get('upperLimitHour')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('upperLimitHour')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('upperLimitHour')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 999 }"
+            >
+              This field cannot be more than 999.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('upperLimitHour')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.lowerLimitHour" for="field_lowerLimitHour"
+            >Lower Limit Hour</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lowerLimitHour"
+            id="field_lowerLimitHour"
+            data-cy="lowerLimitHour"
+            formControlName="lowerLimitHour"
+          />
+          <div
+            *ngIf="
+              editForm.get('lowerLimitHour')!.invalid && (editForm.get('lowerLimitHour')!.dirty || editForm.get('lowerLimitHour')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lowerLimitHour')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lowerLimitHour')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 999 }"
+            >
+              This field cannot be more than 999.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lowerLimitHour')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.additionalPrice" for="field_additionalPrice"
+            >Additional Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="additionalPrice"
+            id="field_additionalPrice"
+            data-cy="additionalPrice"
+            formControlName="additionalPrice"
+          />
+          <div
+            *ngIf="
+              editForm.get('additionalPrice')!.invalid &&
+              (editForm.get('additionalPrice')!.dirty || editForm.get('additionalPrice')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('additionalPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('additionalPrice')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 999999999 }"
+            >
+              This field cannot be more than 999999999.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('additionalPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.deductionPrice" for="field_deductionPrice">Deduction Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="deductionPrice"
+            id="field_deductionPrice"
+            data-cy="deductionPrice"
+            formControlName="deductionPrice"
+          />
+          <div
+            *ngIf="
+              editForm.get('deductionPrice')!.invalid && (editForm.get('deductionPrice')!.dirty || editForm.get('deductionPrice')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deductionPrice')?.errors?.max"
+              jhiTranslate="entity.validation.max"
+              [translateValues]="{ max: 999999999 }"
+            >
+              This field cannot be more than 999999999.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('deductionPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.memo" for="field_memo">Memo</label>
+          <input type="text" class="form-control" name="memo" id="field_memo" data-cy="memo" formControlName="memo" />
+          <div *ngIf="editForm.get('memo')!.invalid && (editForm.get('memo')!.dirty || editForm.get('memo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('memo')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('memo')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 255 }"
+            >
+              This field cannot be longer than 255 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.updateCount" for="field_updateCount">Update Count</label>
+          <input
+            type="number"
+            class="form-control"
+            name="updateCount"
+            id="field_updateCount"
+            data-cy="updateCount"
+            formControlName="updateCount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotationitem.quotation" for="field_quotation">Quotation</label>
+          <select
+            class="form-control"
+            id="field_quotation"
+            data-cy="quotation"
+            name="quotation"
+            formControlName="quotation"
+            [compareWith]="compareQuotation"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="quotationOption" *ngFor="let quotationOption of quotationsSharedCollection">
+              {{ quotationOption.quotationNo }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

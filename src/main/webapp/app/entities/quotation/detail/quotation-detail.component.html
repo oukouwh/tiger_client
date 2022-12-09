@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="quotation">
+      <h2 data-cy="quotationDetailsHeading"><span jhiTranslate="webAppApp.quotation.detail.title">Quotation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ quotation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.quotationNo">Quotation No</span></dt>
+        <dd>
+          <span>{{ quotation.quotationNo }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.quotationName">Quotation Name</span></dt>
+        <dd>
+          <span>{{ quotation.quotationName }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.quotationDate">Quotation Date</span></dt>
+        <dd>
+          <span>{{ quotation.quotationDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.workStart">Work Start</span></dt>
+        <dd>
+          <span>{{ quotation.workStart | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.workEnd">Work End</span></dt>
+        <dd>
+          <span>{{ quotation.workEnd | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.deliveryItems">Delivery Items</span></dt>
+        <dd>
+          <span>{{ quotation.deliveryItems }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.deliveryDate">Delivery Date</span></dt>
+        <dd>
+          <span>{{ quotation.deliveryDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.acceptanceDate">Acceptance Date</span></dt>
+        <dd>
+          <span>{{ quotation.acceptanceDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.paymentsTerms">Payments Terms</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'webAppApp.PayMaster.' + quotation.paymentsTerms }}">{{ quotation.paymentsTerms }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.payFlag">Pay Flag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'webAppApp.PayFlag.' + quotation.payFlag }}">{{ quotation.payFlag }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.quotationExpirationDate">Quotation Expiration Date</span></dt>
+        <dd>
+          <span>{{ quotation.quotationExpirationDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.totalAmount">Total Amount</span></dt>
+        <dd>
+          <span>{{ quotation.totalAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.customerCharge">Customer Charge</span></dt>
+        <dd>
+          <span>{{ quotation.customerCharge }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.accuracy">Accuracy</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'webAppApp.OrderAccuracy.' + quotation.accuracy }}">{{ quotation.accuracy }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.mailSendDate">Mail Send Date</span></dt>
+        <dd>
+          <span>{{ quotation.mailSendDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.postSendDate">Post Send Date</span></dt>
+        <dd>
+          <span>{{ quotation.postSendDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.sendFlag">Send Flag</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'webAppApp.SendFlag.' + quotation.sendFlag }}">{{ quotation.sendFlag }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.salesStaff">Sales Staff</span></dt>
+        <dd>
+          <span>{{ quotation.salesStaff }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.salesOffice">Sales Office</span></dt>
+        <dd>
+          <span>{{ quotation.salesOffice }}</span>
+        </dd>
+        <dt><span jhiTranslate="webAppApp.quotation.updateCount">Update Count</span></dt>
+        <dd>
+          <span>{{ quotation.updateCount }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/quotation', quotation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

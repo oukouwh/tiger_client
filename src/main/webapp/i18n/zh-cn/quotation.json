@@ -1,0 +1,44 @@
+{
+  "webAppApp": {
+    "quotation": {
+      "home": {
+        "title": "Quotations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Quotation",
+        "createOrEditLabel": "创建或编辑 Quotation",
+        "notFound": "No Quotations found"
+      },
+      "created": "Quotation {{ param }} 创建成功",
+      "updated": "Quotation {{ param }} 更新成功",
+      "deleted": "Quotation {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Quotation {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Quotation"
+      },
+      "id": "ID",
+      "quotationNo": "Quotation No",
+      "quotationName": "Quotation Name",
+      "quotationDate": "Quotation Date",
+      "workStart": "Work Start",
+      "workEnd": "Work End",
+      "deliveryItems": "Delivery Items",
+      "deliveryDate": "Delivery Date",
+      "acceptanceDate": "Acceptance Date",
+      "paymentsTerms": "Payments Terms",
+      "payFlag": "Pay Flag",
+      "quotationExpirationDate": "Quotation Expiration Date",
+      "totalAmount": "Total Amount",
+      "customerCharge": "Customer Charge",
+      "accuracy": "Accuracy",
+      "mailSendDate": "Mail Send Date",
+      "postSendDate": "Post Send Date",
+      "sendFlag": "Send Flag",
+      "salesStaff": "Sales Staff",
+      "salesOffice": "Sales Office",
+      "updateCount": "Update Count",
+      "quotationItem": "Quotation Item"
+    }
+  }
+}

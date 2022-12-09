@@ -1,0 +1,169 @@
+<div>
+  <h2 id="page-heading" data-cy="QuotationitemHeading">
+    <span jhiTranslate="webAppApp.quotationitem.home.title">Quotationitems</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="webAppApp.quotationitem.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quotationitem"
+        [routerLink]="['/quotationitem/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="webAppApp.quotationitem.home.createLabel"> Create a new Quotationitem </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="quotationitems?.length === 0">
+    <span jhiTranslate="webAppApp.quotationitem.home.notFound">No Quotationitems found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="quotationitems && quotationitems.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationNo">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.quotationNo">Quotation No</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotationItemNo">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.quotationItemNo">Quotation Item No</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="workerName">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.workerName">Worker Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="standardPrice">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.standardPrice">Standard Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="count">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.count">Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="upperLimitHour">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.upperLimitHour">Upper Limit Hour</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lowerLimitHour">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.lowerLimitHour">Lower Limit Hour</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="additionalPrice">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.additionalPrice">Additional Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="deductionPrice">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.deductionPrice">Deduction Price</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="memo">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.memo">Memo</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="updateCount">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.updateCount">Update Count</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="quotation.quotationNo">
+            <div class="d-flex">
+              <span jhiTranslate="webAppApp.quotationitem.quotation">Quotation</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let quotationitem of quotationitems; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/quotationitem', quotationitem.id, 'view']">{{ quotationitem.id }}</a>
+          </td>
+          <td>{{ quotationitem.quotationNo }}</td>
+          <td>{{ quotationitem.quotationItemNo }}</td>
+          <td>{{ quotationitem.workerName }}</td>
+          <td>{{ quotationitem.standardPrice }}</td>
+          <td>{{ quotationitem.count }}</td>
+          <td>{{ quotationitem.upperLimitHour }}</td>
+          <td>{{ quotationitem.lowerLimitHour }}</td>
+          <td>{{ quotationitem.additionalPrice }}</td>
+          <td>{{ quotationitem.deductionPrice }}</td>
+          <td>{{ quotationitem.memo }}</td>
+          <td>{{ quotationitem.updateCount }}</td>
+          <td>
+            <div *ngIf="quotationitem.quotation">
+              <a [routerLink]="['/quotation', quotationitem.quotation.id, 'view']">{{ quotationitem.quotation.quotationNo }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/quotationitem', quotationitem.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/quotationitem', quotationitem.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(quotationitem)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
