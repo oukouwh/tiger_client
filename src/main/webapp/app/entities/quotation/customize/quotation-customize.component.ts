@@ -1,9 +1,9 @@
 /*
  * @Author: oukouwh
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
- * @LastEditTime: 2022-12-12 16:17:56
- * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/delete/quotation-delete-dialog.component.ts
+ * @LastEditors: TSTZ 
+ * @LastEditTime: 2022-12-12 16:34:43
+ * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/customize/quotation-customize.component.ts
  * @Description: 自定义界面
  */
 import { Component } from '@angular/core';

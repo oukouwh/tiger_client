@@ -1,3 +1,11 @@
+/*
+ * @Author: TSTZ
+ * @Date: 2022-12-09 15:15:59
+ * @LastEditors: TSTZ
+ * @LastEditTime: 2022-12-12 17:23:40
+ * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/update/quotation-update.component.ts
+ * @Description: 
+ */
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -77,5 +85,9 @@ export class QuotationUpdateComponent implements OnInit {
   protected updateForm(quotation: IQuotation): void {
     this.quotation = quotation;
     this.quotationFormService.resetForm(this.editForm, quotation);
+  }
+
+  output(): void {
+    alert("print pdf")
   }
 }

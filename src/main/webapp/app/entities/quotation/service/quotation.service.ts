@@ -9,6 +9,7 @@ import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IQuotation, NewQuotation } from '../quotation.model';
+import * as FileSaver from 'file-saver';
 
 export type PartialUpdateQuotation = Partial<IQuotation> & Pick<IQuotation, 'id'>;
 
@@ -152,5 +153,35 @@ export class QuotationService {
     return res.clone({
       body: res.body ? res.body.map(item => this.convertDateFromServer(item)) : null,
     });
+  }
+
+  /**
+   * pdf打印接口
+   * @param data 
+   * @returns 
+   */
+  printPdf(data: any): Observable<any> {
+    return this.http.post(SERVER_API_URL + 'api/download-excel', data, { observe: 'response', responseType: 'blob' });
+  }
+
+  /**
+   * 下载功能
+   *
+   * @param data 
+   * @param filename 
+   */
+  public download(data: any, filename?: string): void {
+    const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+    //const url = window.URL.createObjectURL(blob);
+    let fname = '';
+    if (filename) {
+      fname = filename;
+    } else {
+      fname = 'myexcel';
+    }
+    const file = new File([blob], fname + '.xlsx', {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
+    });
+    FileSaver.saveAs(blob, fname);
   }
 }

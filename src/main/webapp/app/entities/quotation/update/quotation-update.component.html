@@ -478,12 +478,12 @@
         <!-- ADD 测试用-->
         <button
         type="submit"
-        id="save-entity"
-        data-cy="entityCreateSaveButton"
-        [disabled]="editForm.invalid || isSaving"
+        id="out-put"
+        data-cy="entityOutputButton"
         class="btn btn-primary"
+        (click)="output()"
       >
-        <fa-icon icon="save"></fa-icon>&nbsp;<span>打印</span>
+      <fa-icon icon="print"></fa-icon>&nbsp;<span>印刷</span>
       </button>
       </div>
     </form>
