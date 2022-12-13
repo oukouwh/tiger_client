@@ -1,8 +1,8 @@
 /*
  * @Author: TSTZ
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
- * @LastEditTime: 2022-12-12 12:04:54
+ * @LastEditors: TSTZ
+ * @LastEditTime: 2022-12-13 10:38:01
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/route/quotation-routing.module.ts
  * @Description: 路由
  */
@@ -45,6 +45,7 @@ const quotationRoute: Routes = [
   {
     path: ':id/edit',
     component: QuotationUpdateComponent,
+    // component: QuotationCustomizeComponent,
     resolve: {
       quotation: QuotationRoutingResolveService,
     },
@@ -62,7 +63,9 @@ const quotationRoute: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(quotationRoute)],
+  imports: [
+    RouterModule.forChild(quotationRoute)
+  ],
   exports: [RouterModule],
 })
 export class QuotationRoutingModule {}

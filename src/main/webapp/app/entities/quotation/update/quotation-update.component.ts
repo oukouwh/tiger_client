@@ -2,7 +2,7 @@
  * @Author: TSTZ
  * @Date: 2022-12-09 15:15:59
  * @LastEditors: TSTZ
- * @LastEditTime: 2022-12-12 17:23:40
+ * @LastEditTime: 2022-12-13 11:14:27
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/update/quotation-update.component.ts
  * @Description: 
  */
@@ -49,10 +49,9 @@ export class QuotationUpdateComponent implements OnInit {
     });
   }
 
-  previousState(): void {
-    window.history.back();
-  }
-
+  /**
+   * 创建新的记录保存
+   */
   save(): void {
     this.isSaving = true;
     const quotation = this.quotationFormService.getQuotation(this.editForm);
@@ -63,6 +62,11 @@ export class QuotationUpdateComponent implements OnInit {
     }
   }
 
+  /**
+   * 提交保存
+   * 
+   * @param result 
+   */
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IQuotation>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
@@ -70,8 +74,18 @@ export class QuotationUpdateComponent implements OnInit {
     });
   }
 
+  /**
+   * 保存成功
+   */
   protected onSaveSuccess(): void {
     this.previousState();
+  }
+
+  /**
+   * 返回上界面
+   */
+  previousState(): void {
+    window.history.back();
   }
 
   protected onSaveError(): void {

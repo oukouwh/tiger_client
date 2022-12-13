@@ -101,7 +101,8 @@
       "open": "Open",
       "save": "保存",
       "view": "查看",
-      "show": "Show {{otherEntity}}"
+      "show": "Show {{otherEntity}}",
+      "output": "打印"
     },
     "detail": {
       "field": "字段",

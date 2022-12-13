@@ -1,8 +1,8 @@
 /*
- * @Author: TSTZ 
+ * @Author: 王浩 
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 
- * @LastEditTime: 2022-12-12 11:56:43
+ * @LastEditors: 王
+ * @LastEditTime: 2022-12-13 10:38:52
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/detail/quotation-detail.component.ts
  * @Description: 
  */
@@ -28,6 +28,9 @@ export class QuotationDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * 返回上界面
+   */
   previousState(): void {
     window.history.back();
   }
