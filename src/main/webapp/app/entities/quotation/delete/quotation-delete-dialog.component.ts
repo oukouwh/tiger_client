@@ -1,8 +1,8 @@
 /*
  * @Author: oukouwh
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: oukouwh oukouwh@163.com
- * @LastEditTime: 2022-12-12 10:15:34
+ * @LastEditors: TSTZ 
+ * @LastEditTime: 2022-12-13 15:43:01
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/delete/quotation-delete-dialog.component.ts
  * @Description: 删除界面逻辑
  */

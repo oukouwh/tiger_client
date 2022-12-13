@@ -184,4 +184,11 @@ export class QuotationService {
     });
     FileSaver.saveAs(blob, fname);
   }
+
+  /**
+   * excel
+   */
+  sendToServer(data: any): Observable<any> {
+    return this.http.post(SERVER_API_URL + 'api/download-excel', data, { observe: 'response', responseType: 'blob' });
+  }
 }

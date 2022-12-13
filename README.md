@@ -255,3 +255,11 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/
+
+## package版本冲突问题排查
+```
+npm config set legacy-peer-deps true
+```
+```
+npm audit fix
+```

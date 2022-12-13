@@ -481,9 +481,10 @@
         id="out-put"
         data-cy="entityOutputButton"
         class="btn btn-primary"
-        (click)="output()"
+        (click)="printPDF()"
+        [routerLink]="['/quotation/customize']"
       >
-      <fa-icon icon="print"></fa-icon>&nbsp;<span>印刷</span>
+        <fa-icon icon="print"></fa-icon>&nbsp;<span>印刷</span>
       </button>
       </div>
     </form>
