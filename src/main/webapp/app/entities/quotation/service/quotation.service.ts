@@ -47,7 +47,10 @@ export type EntityArrayResponseType = HttpResponse<IQuotation[]>;
 export class QuotationService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/quotations');
 
-  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
+  constructor(
+    protected http: HttpClient, 
+    protected applicationConfigService: ApplicationConfigService
+  ) { }
 
   create(quotation: NewQuotation): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(quotation);
@@ -172,7 +175,6 @@ export class QuotationService {
    */
   public download(data: any, filename?: string): void {
     const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
-    //const url = window.URL.createObjectURL(blob);
     let fname = '';
     if (filename) {
       fname = filename;
@@ -189,6 +191,8 @@ export class QuotationService {
    * excel
    */
   sendToServer(data: any): Observable<any> {
+    console.log("SERVER_API_URL:" + SERVER_API_URL);
+    console.log("data:" + data);
     return this.http.post(SERVER_API_URL + 'api/download-excel', data, { observe: 'response', responseType: 'blob' });
   }
 }

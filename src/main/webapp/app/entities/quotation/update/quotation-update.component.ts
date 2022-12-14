@@ -2,7 +2,7 @@
  * @Author: TSTZ
  * @Date: 2022-12-09 15:15:59
  * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
- * @LastEditTime: 2022-12-13 16:38:26
+ * @LastEditTime: 2022-12-14 10:09:49
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/update/quotation-update.component.ts
  * @Description: 
  */
@@ -121,7 +121,6 @@ export class QuotationUpdateComponent implements OnInit {
     //   header: '打印',
     //   accept: () => {
     //     this.quotationService.sendToServer(data).subscribe(res => {
-    //       // eslint-disable-next-line no-console
     //       console.log(res.body);
     //       this.quotationService.download(res.body);
     //     });
@@ -131,7 +130,7 @@ export class QuotationUpdateComponent implements OnInit {
     // $event.preventDefault();
   }
 
-  private createFromForm(): IQuotation {
+  private createFromForm(): any {
     return {
       // ...new Quotation(),
       id: this.editForm.get(['id'])!.value,

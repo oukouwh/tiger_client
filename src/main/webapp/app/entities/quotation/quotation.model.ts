@@ -1,3 +1,11 @@
+/*
+ * @Author: TSTZ 
+ * @Date: 2022-12-09 15:15:59
+ * @LastEditors: TSTZ 
+ * @LastEditTime: 2022-12-14 09:57:28
+ * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/quotation.model.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import dayjs from 'dayjs/esm';
 import { PayMaster } from 'app/entities/enumerations/pay-master.model';
 import { PayFlag } from 'app/entities/enumerations/pay-flag.model';
@@ -27,5 +35,7 @@ export interface IQuotation {
   salesOffice?: string | null;
   updateCount?: number | null;
 }
+
+
 
 export type NewQuotation = Omit<IQuotation, 'id'> & { id: null };
