@@ -1,11 +1,313 @@
-<!--
- * @Author: TSTZ 
- * @Date: 2022-12-12 11:37:05
- * @LastEditors: TSTZ
- * @LastEditTime: 2022-12-13 10:10:09
- * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/customize/quotation-customize.component.html
- * @Description: 自定义html界面
--->
-<div class="modal-header">
-  <fa-icon icon="print"></fa-icon>&nbsp;<span>印</span>
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" [formGroup]="editForm">
+      <h2 id="jhi-quotation-heading" data-cy="QuotationCreateUpdateHeading" jhiTranslate="webAppApp.quotation.home.createTablePdf">
+        PDF印刷画面
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationNo" for="field_quotationNo">Quotation No</label>
+          <input
+            type="text"
+            class="form-control"
+            name="quotationNo"
+            id="field_quotationNo"
+            data-cy="quotationNo"
+            formControlName="quotationNo"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationName" for="field_quotationName">Quotation Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="quotationName"
+            id="field_quotationName"
+            data-cy="quotationName"
+            formControlName="quotationName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationDate" for="field_quotationDate">Quotation Date</label>
+          <div class="input-group">
+            <input
+              id="field_quotationDate"
+              data-cy="quotationDate"
+              type="text"
+              class="form-control"
+              name="quotationDate"
+              ngbDatepicker
+              #quotationDateDp="ngbDatepicker"
+              formControlName="quotationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="quotationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.workStart" for="field_workStart">Work Start</label>
+          <div class="input-group">
+            <input
+              id="field_workStart"
+              data-cy="workStart"
+              type="text"
+              class="form-control"
+              name="workStart"
+              ngbDatepicker
+              #workStartDp="ngbDatepicker"
+              formControlName="workStart"
+            />
+            <button type="button" class="btn btn-secondary" (click)="workStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.workEnd" for="field_workEnd">Work End</label>
+          <div class="input-group">
+            <input
+              id="field_workEnd"
+              data-cy="workEnd"
+              type="text"
+              class="form-control"
+              name="workEnd"
+              ngbDatepicker
+              #workEndDp="ngbDatepicker"
+              formControlName="workEnd"
+            />
+            <button type="button" class="btn btn-secondary" (click)="workEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryItems" for="field_deliveryItems">Delivery Items</label>
+          <input
+            type="text"
+            class="form-control"
+            name="deliveryItems"
+            id="field_deliveryItems"
+            data-cy="deliveryItems"
+            formControlName="deliveryItems"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryDate" for="field_deliveryDate">Delivery Date</label>
+          <div class="input-group">
+            <input
+              id="field_deliveryDate"
+              data-cy="deliveryDate"
+              type="text"
+              class="form-control"
+              name="deliveryDate"
+              ngbDatepicker
+              #deliveryDateDp="ngbDatepicker"
+              formControlName="deliveryDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="deliveryDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.acceptanceDate" for="field_acceptanceDate">Acceptance Date</label>
+          <div class="input-group">
+            <input
+              id="field_acceptanceDate"
+              data-cy="acceptanceDate"
+              type="text"
+              class="form-control"
+              name="acceptanceDate"
+              ngbDatepicker
+              #acceptanceDateDp="ngbDatepicker"
+              formControlName="acceptanceDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="acceptanceDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.paymentsTerms" for="field_paymentsTerms">Payments Terms</label>
+          <select
+            class="form-control"
+            name="paymentsTerms"
+            formControlName="paymentsTerms"
+            id="field_paymentsTerms"
+            data-cy="paymentsTerms"
+          >
+            <option [ngValue]="null">{{ 'webAppApp.PayMaster.null' | translate }}</option>
+            <option *ngFor="let payMaster of payMasterValues" [value]="payMaster">
+              {{ 'webAppApp.PayMaster.' + payMaster | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.payFlag" for="field_payFlag">Pay Flag</label>
+          <select class="form-control" name="payFlag" formControlName="payFlag" id="field_payFlag" data-cy="payFlag">
+            <option [ngValue]="null">{{ 'webAppApp.PayFlag.null' | translate }}</option>
+            <option *ngFor="let payFlag of payFlagValues" [value]="payFlag">{{ 'webAppApp.PayFlag.' + payFlag | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationExpirationDate" for="field_quotationExpirationDate"
+            >Quotation Expiration Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_quotationExpirationDate"
+              data-cy="quotationExpirationDate"
+              type="text"
+              class="form-control"
+              name="quotationExpirationDate"
+              ngbDatepicker
+              #quotationExpirationDateDp="ngbDatepicker"
+              formControlName="quotationExpirationDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="quotationExpirationDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.totalAmount" for="field_totalAmount">Total Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalAmount"
+            id="field_totalAmount"
+            data-cy="totalAmount"
+            formControlName="totalAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.customerCharge" for="field_customerCharge">Customer Charge</label>
+          <input
+            type="text"
+            class="form-control"
+            name="customerCharge"
+            id="field_customerCharge"
+            data-cy="customerCharge"
+            formControlName="customerCharge"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.accuracy" for="field_accuracy">Accuracy</label>
+          <select class="form-control" name="accuracy" formControlName="accuracy" id="field_accuracy" data-cy="accuracy">
+            <option [ngValue]="null">{{ 'webAppApp.OrderAccuracy.null' | translate }}</option>
+            <option *ngFor="let orderAccuracy of orderAccuracyValues" [value]="orderAccuracy">
+              {{ 'webAppApp.OrderAccuracy.' + orderAccuracy | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.mailSendDate" for="field_mailSendDate">Mail Send Date</label>
+          <div class="input-group">
+            <input
+              id="field_mailSendDate"
+              data-cy="mailSendDate"
+              type="text"
+              class="form-control"
+              name="mailSendDate"
+              ngbDatepicker
+              #mailSendDateDp="ngbDatepicker"
+              formControlName="mailSendDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="mailSendDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.postSendDate" for="field_postSendDate">Post Send Date</label>
+          <div class="input-group">
+            <input
+              id="field_postSendDate"
+              data-cy="postSendDate"
+              type="text"
+              class="form-control"
+              name="postSendDate"
+              ngbDatepicker
+              #postSendDateDp="ngbDatepicker"
+              formControlName="postSendDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="postSendDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.sendFlag" for="field_sendFlag">Send Flag</label>
+          <select class="form-control" name="sendFlag" formControlName="sendFlag" id="field_sendFlag" data-cy="sendFlag">
+            <option [ngValue]="null">{{ 'webAppApp.SendFlag.null' | translate }}</option>
+            <option *ngFor="let sendFlag of sendFlagValues" [value]="sendFlag">{{ 'webAppApp.SendFlag.' + sendFlag | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.salesStaff" for="field_salesStaff">Sales Staff</label>
+          <input
+            type="text"
+            class="form-control"
+            name="salesStaff"
+            id="field_salesStaff"
+            data-cy="salesStaff"
+            formControlName="salesStaff"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.salesOffice" for="field_salesOffice">Sales Office</label>
+          <input
+            type="text"
+            class="form-control"
+            name="salesOffice"
+            id="field_salesOffice"
+            data-cy="salesOffice"
+            formControlName="salesOffice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.updateCount" for="field_updateCount">Update Count</label>
+          <input
+            type="number"
+            class="form-control"
+            name="updateCount"
+            id="field_updateCount"
+            data-cy="updateCount"
+            formControlName="updateCount"
+          />
+        </div>
+      </div>
+
+      <div>
+        <!-- 印刷ボタン　-->
+        <button type="submit" id="out-put" data-cy="entityOutputButton" class="btn btn-primary" (click)="printPDF()">
+          <span>印刷</span>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

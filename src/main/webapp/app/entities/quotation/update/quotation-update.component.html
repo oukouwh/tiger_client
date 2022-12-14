@@ -1,7 +1,8 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
     <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="jhi-quotation-heading" data-cy="QuotationCreateUpdateHeading" jhiTranslate="webAppApp.quotation.home.createOrEditLabel">
+      <h2 id="jhi-quotation-heading" data-cy="QuotationCreateUpdateHeading"
+        jhiTranslate="webAppApp.quotation.home.createOrEditLabel">
         Create or edit a Quotation
       </h2>
 
@@ -10,116 +11,76 @@
 
         <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
           <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id"
+            [readonly]="true" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationNo" for="field_quotationNo">Quotation No</label>
-          <input
-            type="text"
-            class="form-control"
-            name="quotationNo"
-            id="field_quotationNo"
-            data-cy="quotationNo"
-            formControlName="quotationNo"
-          />
-          <div *ngIf="editForm.get('quotationNo')!.invalid && (editForm.get('quotationNo')!.dirty || editForm.get('quotationNo')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('quotationNo')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationNo" for="field_quotationNo">Quotation
+            No</label>
+          <input type="text" class="form-control" name="quotationNo" id="field_quotationNo" data-cy="quotationNo"
+            formControlName="quotationNo" />
+          <div
+            *ngIf="editForm.get('quotationNo')!.invalid && (editForm.get('quotationNo')!.dirty || editForm.get('quotationNo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('quotationNo')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationName" for="field_quotationName">Quotation Name</label>
-          <input
-            type="text"
-            class="form-control"
-            name="quotationName"
-            id="field_quotationName"
-            data-cy="quotationName"
-            formControlName="quotationName"
-          />
-          <div
-            *ngIf="
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationName" for="field_quotationName">Quotation
+            Name</label>
+          <input type="text" class="form-control" name="quotationName" id="field_quotationName" data-cy="quotationName"
+            formControlName="quotationName" />
+          <div *ngIf="
               editForm.get('quotationName')!.invalid && (editForm.get('quotationName')!.dirty || editForm.get('quotationName')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('quotationName')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('quotationName')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('quotationName')?.errors?.maxlength"
-              jhiTranslate="entity.validation.maxlength"
-              [translateValues]="{ max: 100 }"
-            >
+            <small class="form-text text-danger" *ngIf="editForm.get('quotationName')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 100 }">
               This field cannot be longer than 100 characters.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationDate" for="field_quotationDate">Quotation Date</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationDate" for="field_quotationDate">Quotation
+            Date</label>
           <div class="input-group">
-            <input
-              id="field_quotationDate"
-              data-cy="quotationDate"
-              type="text"
-              class="form-control"
-              name="quotationDate"
-              ngbDatepicker
-              #quotationDateDp="ngbDatepicker"
-              formControlName="quotationDate"
-            />
+            <input id="field_quotationDate" data-cy="quotationDate" type="text" class="form-control"
+              name="quotationDate" ngbDatepicker #quotationDateDp="ngbDatepicker" formControlName="quotationDate" />
             <button type="button" class="btn btn-secondary" (click)="quotationDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
           </div>
-          <div
-            *ngIf="
+          <div *ngIf="
               editForm.get('quotationDate')!.invalid && (editForm.get('quotationDate')!.dirty || editForm.get('quotationDate')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('quotationDate')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('quotationDate')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.workStart" for="field_workStart">Work Start</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.workStart" for="field_workStart">Work
+            Start</label>
           <div class="input-group">
-            <input
-              id="field_workStart"
-              data-cy="workStart"
-              type="text"
-              class="form-control"
-              name="workStart"
-              ngbDatepicker
-              #workStartDp="ngbDatepicker"
-              formControlName="workStart"
-            />
-            <button type="button" class="btn btn-secondary" (click)="workStartDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            <input id="field_workStart" data-cy="workStart" type="text" class="form-control" name="workStart"
+              ngbDatepicker #workStartDp="ngbDatepicker" formControlName="workStart" />
+            <button type="button" class="btn btn-secondary" (click)="workStartDp.toggle()"><fa-icon
+                icon="calendar-alt"></fa-icon></button>
           </div>
-          <div *ngIf="editForm.get('workStart')!.invalid && (editForm.get('workStart')!.dirty || editForm.get('workStart')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('workStart')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+          <div
+            *ngIf="editForm.get('workStart')!.invalid && (editForm.get('workStart')!.dirty || editForm.get('workStart')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('workStart')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
@@ -128,140 +89,89 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="webAppApp.quotation.workEnd" for="field_workEnd">Work End</label>
           <div class="input-group">
-            <input
-              id="field_workEnd"
-              data-cy="workEnd"
-              type="text"
-              class="form-control"
-              name="workEnd"
-              ngbDatepicker
-              #workEndDp="ngbDatepicker"
-              formControlName="workEnd"
-            />
-            <button type="button" class="btn btn-secondary" (click)="workEndDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            <input id="field_workEnd" data-cy="workEnd" type="text" class="form-control" name="workEnd" ngbDatepicker
+              #workEndDp="ngbDatepicker" formControlName="workEnd" />
+            <button type="button" class="btn btn-secondary" (click)="workEndDp.toggle()"><fa-icon
+                icon="calendar-alt"></fa-icon></button>
           </div>
-          <div *ngIf="editForm.get('workEnd')!.invalid && (editForm.get('workEnd')!.dirty || editForm.get('workEnd')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('workEnd')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
-              This field is required.
-            </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryItems" for="field_deliveryItems">Delivery Items</label>
-          <input
-            type="text"
-            class="form-control"
-            name="deliveryItems"
-            id="field_deliveryItems"
-            data-cy="deliveryItems"
-            formControlName="deliveryItems"
-          />
           <div
-            *ngIf="
-              editForm.get('deliveryItems')!.invalid && (editForm.get('deliveryItems')!.dirty || editForm.get('deliveryItems')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('deliveryItems')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            *ngIf="editForm.get('workEnd')!.invalid && (editForm.get('workEnd')!.dirty || editForm.get('workEnd')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('workEnd')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryDate" for="field_deliveryDate">Delivery Date</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryItems" for="field_deliveryItems">Delivery
+            Items</label>
+          <input type="text" class="form-control" name="deliveryItems" id="field_deliveryItems" data-cy="deliveryItems"
+            formControlName="deliveryItems" />
+          <div *ngIf="
+              editForm.get('deliveryItems')!.invalid && (editForm.get('deliveryItems')!.dirty || editForm.get('deliveryItems')!.touched)
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('deliveryItems')?.errors?.required"
+              jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="webAppApp.quotation.deliveryDate" for="field_deliveryDate">Delivery
+            Date</label>
           <div class="input-group">
-            <input
-              id="field_deliveryDate"
-              data-cy="deliveryDate"
-              type="text"
-              class="form-control"
-              name="deliveryDate"
-              ngbDatepicker
-              #deliveryDateDp="ngbDatepicker"
-              formControlName="deliveryDate"
-            />
+            <input id="field_deliveryDate" data-cy="deliveryDate" type="text" class="form-control" name="deliveryDate"
+              ngbDatepicker #deliveryDateDp="ngbDatepicker" formControlName="deliveryDate" />
             <button type="button" class="btn btn-secondary" (click)="deliveryDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
           </div>
           <div
-            *ngIf="editForm.get('deliveryDate')!.invalid && (editForm.get('deliveryDate')!.dirty || editForm.get('deliveryDate')!.touched)"
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('deliveryDate')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            *ngIf="editForm.get('deliveryDate')!.invalid && (editForm.get('deliveryDate')!.dirty || editForm.get('deliveryDate')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('deliveryDate')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.acceptanceDate" for="field_acceptanceDate">Acceptance Date</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.acceptanceDate"
+            for="field_acceptanceDate">Acceptance Date</label>
           <div class="input-group">
-            <input
-              id="field_acceptanceDate"
-              data-cy="acceptanceDate"
-              type="text"
-              class="form-control"
-              name="acceptanceDate"
-              ngbDatepicker
-              #acceptanceDateDp="ngbDatepicker"
-              formControlName="acceptanceDate"
-            />
+            <input id="field_acceptanceDate" data-cy="acceptanceDate" type="text" class="form-control"
+              name="acceptanceDate" ngbDatepicker #acceptanceDateDp="ngbDatepicker" formControlName="acceptanceDate" />
             <button type="button" class="btn btn-secondary" (click)="acceptanceDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
           </div>
-          <div
-            *ngIf="
+          <div *ngIf="
               editForm.get('acceptanceDate')!.invalid && (editForm.get('acceptanceDate')!.dirty || editForm.get('acceptanceDate')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('acceptanceDate')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('acceptanceDate')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.paymentsTerms" for="field_paymentsTerms">Payments Terms</label>
-          <select
-            class="form-control"
-            name="paymentsTerms"
-            formControlName="paymentsTerms"
-            id="field_paymentsTerms"
-            data-cy="paymentsTerms"
-          >
+          <label class="form-label" jhiTranslate="webAppApp.quotation.paymentsTerms" for="field_paymentsTerms">Payments
+            Terms</label>
+          <select class="form-control" name="paymentsTerms" formControlName="paymentsTerms" id="field_paymentsTerms"
+            data-cy="paymentsTerms">
             <option [ngValue]="null">{{ 'webAppApp.PayMaster.null' | translate }}</option>
             <option *ngFor="let payMaster of payMasterValues" [value]="payMaster">
               {{ 'webAppApp.PayMaster.' + payMaster | translate }}
             </option>
           </select>
-          <div
-            *ngIf="
+          <div *ngIf="
               editForm.get('paymentsTerms')!.invalid && (editForm.get('paymentsTerms')!.dirty || editForm.get('paymentsTerms')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('paymentsTerms')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('paymentsTerms')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
@@ -271,105 +181,73 @@
           <label class="form-label" jhiTranslate="webAppApp.quotation.payFlag" for="field_payFlag">Pay Flag</label>
           <select class="form-control" name="payFlag" formControlName="payFlag" id="field_payFlag" data-cy="payFlag">
             <option [ngValue]="null">{{ 'webAppApp.PayFlag.null' | translate }}</option>
-            <option *ngFor="let payFlag of payFlagValues" [value]="payFlag">{{ 'webAppApp.PayFlag.' + payFlag | translate }}</option>
+            <option *ngFor="let payFlag of payFlagValues" [value]="payFlag">{{ 'webAppApp.PayFlag.' + payFlag |
+              translate }}</option>
           </select>
-          <div *ngIf="editForm.get('payFlag')!.invalid && (editForm.get('payFlag')!.dirty || editForm.get('payFlag')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('payFlag')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+          <div
+            *ngIf="editForm.get('payFlag')!.invalid && (editForm.get('payFlag')!.dirty || editForm.get('payFlag')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('payFlag')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationExpirationDate" for="field_quotationExpirationDate"
-            >Quotation Expiration Date</label
-          >
+          <label class="form-label" jhiTranslate="webAppApp.quotation.quotationExpirationDate"
+            for="field_quotationExpirationDate">Quotation Expiration Date</label>
           <div class="input-group">
-            <input
-              id="field_quotationExpirationDate"
-              data-cy="quotationExpirationDate"
-              type="text"
-              class="form-control"
-              name="quotationExpirationDate"
-              ngbDatepicker
-              #quotationExpirationDateDp="ngbDatepicker"
-              formControlName="quotationExpirationDate"
-            />
+            <input id="field_quotationExpirationDate" data-cy="quotationExpirationDate" type="text" class="form-control"
+              name="quotationExpirationDate" ngbDatepicker #quotationExpirationDateDp="ngbDatepicker"
+              formControlName="quotationExpirationDate" />
             <button type="button" class="btn btn-secondary" (click)="quotationExpirationDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
           </div>
-          <div
-            *ngIf="
+          <div *ngIf="
               editForm.get('quotationExpirationDate')!.invalid &&
               (editForm.get('quotationExpirationDate')!.dirty || editForm.get('quotationExpirationDate')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('quotationExpirationDate')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+            ">
+            <small class="form-text text-danger" *ngIf="editForm.get('quotationExpirationDate')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.totalAmount" for="field_totalAmount">Total Amount</label>
-          <input
-            type="number"
-            class="form-control"
-            name="totalAmount"
-            id="field_totalAmount"
-            data-cy="totalAmount"
-            formControlName="totalAmount"
-          />
-          <div *ngIf="editForm.get('totalAmount')!.invalid && (editForm.get('totalAmount')!.dirty || editForm.get('totalAmount')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('totalAmount')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
+          <label class="form-label" jhiTranslate="webAppApp.quotation.totalAmount" for="field_totalAmount">Total
+            Amount</label>
+          <input type="number" class="form-control" name="totalAmount" id="field_totalAmount" data-cy="totalAmount"
+            formControlName="totalAmount" />
+          <div
+            *ngIf="editForm.get('totalAmount')!.invalid && (editForm.get('totalAmount')!.dirty || editForm.get('totalAmount')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('totalAmount')?.errors?.required"
+              jhiTranslate="entity.validation.required">
               This field is required.
             </small>
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('totalAmount')?.errors?.max"
-              jhiTranslate="entity.validation.max"
-              [translateValues]="{ max: 999999999 }"
-            >
+            <small class="form-text text-danger" *ngIf="editForm.get('totalAmount')?.errors?.max"
+              jhiTranslate="entity.validation.max" [translateValues]="{ max: 999999999 }">
               This field cannot be more than 999999999.
             </small>
-            <small
-              class="form-text text-danger"
-              [hidden]="!editForm.get('totalAmount')?.errors?.number"
-              jhiTranslate="entity.validation.number"
-            >
+            <small class="form-text text-danger" [hidden]="!editForm.get('totalAmount')?.errors?.number"
+              jhiTranslate="entity.validation.number">
               This field should be a number.
             </small>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.customerCharge" for="field_customerCharge">Customer Charge</label>
-          <input
-            type="text"
-            class="form-control"
-            name="customerCharge"
-            id="field_customerCharge"
-            data-cy="customerCharge"
-            formControlName="customerCharge"
-          />
+          <label class="form-label" jhiTranslate="webAppApp.quotation.customerCharge"
+            for="field_customerCharge">Customer Charge</label>
+          <input type="text" class="form-control" name="customerCharge" id="field_customerCharge"
+            data-cy="customerCharge" formControlName="customerCharge" />
         </div>
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="webAppApp.quotation.accuracy" for="field_accuracy">Accuracy</label>
-          <select class="form-control" name="accuracy" formControlName="accuracy" id="field_accuracy" data-cy="accuracy">
+          <select class="form-control" name="accuracy" formControlName="accuracy" id="field_accuracy"
+            data-cy="accuracy">
             <option [ngValue]="null">{{ 'webAppApp.OrderAccuracy.null' | translate }}</option>
             <option *ngFor="let orderAccuracy of orderAccuracyValues" [value]="orderAccuracy">
               {{ 'webAppApp.OrderAccuracy.' + orderAccuracy | translate }}
@@ -378,18 +256,11 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.mailSendDate" for="field_mailSendDate">Mail Send Date</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.mailSendDate" for="field_mailSendDate">Mail Send
+            Date</label>
           <div class="input-group">
-            <input
-              id="field_mailSendDate"
-              data-cy="mailSendDate"
-              type="text"
-              class="form-control"
-              name="mailSendDate"
-              ngbDatepicker
-              #mailSendDateDp="ngbDatepicker"
-              formControlName="mailSendDate"
-            />
+            <input id="field_mailSendDate" data-cy="mailSendDate" type="text" class="form-control" name="mailSendDate"
+              ngbDatepicker #mailSendDateDp="ngbDatepicker" formControlName="mailSendDate" />
             <button type="button" class="btn btn-secondary" (click)="mailSendDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
@@ -397,18 +268,11 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.postSendDate" for="field_postSendDate">Post Send Date</label>
+          <label class="form-label" jhiTranslate="webAppApp.quotation.postSendDate" for="field_postSendDate">Post Send
+            Date</label>
           <div class="input-group">
-            <input
-              id="field_postSendDate"
-              data-cy="postSendDate"
-              type="text"
-              class="form-control"
-              name="postSendDate"
-              ngbDatepicker
-              #postSendDateDp="ngbDatepicker"
-              formControlName="postSendDate"
-            />
+            <input id="field_postSendDate" data-cy="postSendDate" type="text" class="form-control" name="postSendDate"
+              ngbDatepicker #postSendDateDp="ngbDatepicker" formControlName="postSendDate" />
             <button type="button" class="btn btn-secondary" (click)="postSendDateDp.toggle()">
               <fa-icon icon="calendar-alt"></fa-icon>
             </button>
@@ -417,75 +281,54 @@
 
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="webAppApp.quotation.sendFlag" for="field_sendFlag">Send Flag</label>
-          <select class="form-control" name="sendFlag" formControlName="sendFlag" id="field_sendFlag" data-cy="sendFlag">
+          <select class="form-control" name="sendFlag" formControlName="sendFlag" id="field_sendFlag"
+            data-cy="sendFlag">
             <option [ngValue]="null">{{ 'webAppApp.SendFlag.null' | translate }}</option>
-            <option *ngFor="let sendFlag of sendFlagValues" [value]="sendFlag">{{ 'webAppApp.SendFlag.' + sendFlag | translate }}</option>
+            <option *ngFor="let sendFlag of sendFlagValues" [value]="sendFlag">{{ 'webAppApp.SendFlag.' + sendFlag |
+              translate }}</option>
           </select>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.salesStaff" for="field_salesStaff">Sales Staff</label>
-          <input
-            type="text"
-            class="form-control"
-            name="salesStaff"
-            id="field_salesStaff"
-            data-cy="salesStaff"
-            formControlName="salesStaff"
-          />
+          <label class="form-label" jhiTranslate="webAppApp.quotation.salesStaff" for="field_salesStaff">Sales
+            Staff</label>
+          <input type="text" class="form-control" name="salesStaff" id="field_salesStaff" data-cy="salesStaff"
+            formControlName="salesStaff" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.salesOffice" for="field_salesOffice">Sales Office</label>
-          <input
-            type="text"
-            class="form-control"
-            name="salesOffice"
-            id="field_salesOffice"
-            data-cy="salesOffice"
-            formControlName="salesOffice"
-          />
+          <label class="form-label" jhiTranslate="webAppApp.quotation.salesOffice" for="field_salesOffice">Sales
+            Office</label>
+          <input type="text" class="form-control" name="salesOffice" id="field_salesOffice" data-cy="salesOffice"
+            formControlName="salesOffice" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="webAppApp.quotation.updateCount" for="field_updateCount">Update Count</label>
-          <input
-            type="number"
-            class="form-control"
-            name="updateCount"
-            id="field_updateCount"
-            data-cy="updateCount"
-            formControlName="updateCount"
-          />
+          <label class="form-label" jhiTranslate="webAppApp.quotation.updateCount" for="field_updateCount">Update
+            Count</label>
+          <input type="number" class="form-control" name="updateCount" id="field_updateCount" data-cy="updateCount"
+            formControlName="updateCount" />
         </div>
       </div>
 
-      <div>
-        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+      <!-- TODP *ngFor="let quotation of quotations; trackBy: trackId" data-cy="entityTable" -->
+      <div >
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary"
+          (click)="previousState()">
           <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
 
-        <button
-          type="submit"
-          id="save-entity"
-          data-cy="entityCreateSaveButton"
-          [disabled]="editForm.invalid || isSaving"
-          class="btn btn-primary"
-        >
+        <button type="submit" id="save-entity" data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
 
-        <!-- ADD 测试用-->
-        <button
-        type="submit"
-        id="out-put"
-        data-cy="entityOutputButton"
-        class="btn btn-primary"
-        (click)="printPDF()"
-        [routerLink]="['/quotation/customize']"
-      >
-        <fa-icon icon="print"></fa-icon>&nbsp;<span>印刷</span>
-      </button>
+        <!-- TODO 打印界面跳转入口 需要携带ID参数跳转界面 -->
+        <button type="submit" id="out-put" data-cy="entityOutputButton" class="btn btn-primary" (click)="printPDF()"
+          [routerLink]="['/quotation', 'customize']">
+          <span>印刷</span>
+        </button>
+
       </div>
     </form>
   </div>

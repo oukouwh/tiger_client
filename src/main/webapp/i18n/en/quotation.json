@@ -6,7 +6,8 @@
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Quotation",
         "createOrEditLabel": "Create or edit a Quotation",
-        "notFound": "No Quotations found"
+        "notFound": "No Quotations found",
+        "createTablePdf": "PDF印刷画面"
       },
       "created": "A new Quotation is created with identifier {{ param }}",
       "updated": "A Quotation is updated with identifier {{ param }}",

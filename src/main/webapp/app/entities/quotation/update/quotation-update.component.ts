@@ -1,8 +1,8 @@
 /*
- * @Author: TSTZ
+ * @Author: 王浩
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
- * @LastEditTime: 2022-12-14 10:09:49
+ * @LastEditors: 王浩
+ * @LastEditTime: 2022-12-14 16:27:19
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/update/quotation-update.component.ts
  * @Description: 
  */
@@ -11,7 +11,7 @@ import { HttpResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-
+import { HttpHeaders } from '@angular/common/http';
 import { QuotationFormService, QuotationFormGroup } from './quotation-form.service';
 import { IQuotation } from '../quotation.model';
 import { QuotationService } from '../service/quotation.service';
@@ -19,21 +19,26 @@ import { PayMaster } from 'app/entities/enumerations/pay-master.model';
 import { PayFlag } from 'app/entities/enumerations/pay-flag.model';
 import { OrderAccuracy } from 'app/entities/enumerations/order-accuracy.model';
 import { SendFlag } from 'app/entities/enumerations/send-flag.model';
-// import { ConfirmationService } from 'primeng/api';
+
+import { TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
+import { EntityArrayResponseType } from '../service/quotation.service';
 
 @Component({
   selector: 'jhi-quotation-update',
   templateUrl: './quotation-update.component.html',
 })
 export class QuotationUpdateComponent implements OnInit {
+  quotations?: IQuotation[];
+  // ADD  START
   isSaving = false;
   quotation: IQuotation | null = null;
   payMasterValues = Object.keys(PayMaster);
   payFlagValues = Object.keys(PayFlag);
   orderAccuracyValues = Object.keys(OrderAccuracy);
   sendFlagValues = Object.keys(SendFlag);
-
+  totalItems = 0;
   editForm: QuotationFormGroup = this.quotationFormService.createQuotationFormGroup();
+  // ADD END
 
   constructor(
     protected quotationService: QuotationService,
@@ -41,6 +46,8 @@ export class QuotationUpdateComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     // private confirmationService: ConfirmationService
   ) {}
+
+  trackId = (_index: number, item: IQuotation): number => this.quotationService.getQuotationIdentifier(item);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ quotation }) => {
@@ -156,4 +163,33 @@ export class QuotationUpdateComponent implements OnInit {
       updateCount: this.editForm.get(['updateCount'])!.value
     };
   }
+
+  /**
+   * 
+   * @param response 
+   */
+  protected onResponseSuccess(response: EntityArrayResponseType): void {
+    this.fillComponentAttributesFromResponseHeader(response.headers);
+    const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
+    this.quotations = dataFromBody;
+  }
+
+  /**
+   * 
+   * @param headers 
+   */
+  protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {
+    this.totalItems = Number(headers.get(TOTAL_COUNT_RESPONSE_HEADER));
+  }
+
+  /**
+   * 
+   * @param data 
+   * @returns 
+   */
+  protected fillComponentAttributesFromResponseBody(data: IQuotation[] | null): IQuotation[] {
+    return data ?? [];
+  }
+
+
 }
