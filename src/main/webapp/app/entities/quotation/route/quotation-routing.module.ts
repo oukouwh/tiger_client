@@ -2,7 +2,7 @@
  * @Author: TSTZ
  * @Date: 2022-12-09 15:15:59
  * @LastEditors: TSTZ
- * @LastEditTime: 2022-12-13 10:38:01
+ * @LastEditTime: 2022-12-19 09:05:18
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/route/quotation-routing.module.ts
  * @Description: 路由
  */
@@ -45,7 +45,6 @@ const quotationRoute: Routes = [
   {
     path: ':id/edit',
     component: QuotationUpdateComponent,
-    // component: QuotationCustomizeComponent,
     resolve: {
       quotation: QuotationRoutingResolveService,
     },
@@ -53,7 +52,7 @@ const quotationRoute: Routes = [
   },
   // ADD
   {
-    path: 'customize',
+    path: ':id/customize',
     component: QuotationCustomizeComponent,
     resolve: {
       quotation: QuotationRoutingResolveService,

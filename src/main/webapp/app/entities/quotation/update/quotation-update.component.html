@@ -311,7 +311,6 @@
         </div>
       </div>
 
-      <!-- TODP *ngFor="let quotation of quotations; trackBy: trackId" data-cy="entityTable" -->
       <div >
         <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary"
           (click)="previousState()">
@@ -321,12 +320,6 @@
         <button type="submit" id="save-entity" data-cy="entityCreateSaveButton"
           [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
           <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-
-        <!-- TODO 打印界面跳转入口 需要携带ID参数跳转界面 -->
-        <button type="submit" id="out-put" data-cy="entityOutputButton" class="btn btn-primary" (click)="printPDF()"
-          [routerLink]="['/quotation', 'customize']">
-          <span>印刷</span>
         </button>
 
       </div>

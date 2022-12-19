@@ -2,7 +2,7 @@
  * @Author: 王浩
  * @Date: 2022-12-09 15:15:59
  * @LastEditors: TSTZ
- * @LastEditTime: 2022-12-14 16:28:14
+ * @LastEditTime: 2022-12-19 09:05:46
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/customize/quotation-customize.component.ts
  * @Description: 自定义界面
  */
@@ -22,7 +22,8 @@ import { SendFlag } from 'app/entities/enumerations/send-flag.model';
   styleUrls: ['./quotation-customize.component.scss']
 })
 export class QuotationCustomizeComponent implements OnInit {
-  quotation: IQuotation | null = null;
+  // quotation: IQuotation | null = null;
+  quotation?: IQuotation[];
   payMasterValues = Object.keys(PayMaster);
   payFlagValues = Object.keys(PayFlag);
   orderAccuracyValues = Object.keys(OrderAccuracy);
@@ -38,25 +39,45 @@ export class QuotationCustomizeComponent implements OnInit {
   trackId = (_index: number, item: IQuotation): number => this.quotationService.getQuotationIdentifier(item);
 
   ngOnInit(): void {
+    // this.activatedRoute.data.subscribe(({ quotation }) => {
+    //   this.quotation = quotation;
+      
+    //   if (quotation) {
+    //     this.updateForm(quotation);
+    //   }
+    // });
     this.activatedRoute.data.subscribe(({ quotation }) => {
       this.quotation = quotation;
-      if (quotation) {
-        this.updateForm(quotation);
-      }
+      console.log("this.quotation :" + this.quotation )
     });
   }
 
   printPDF(): void {
     // TODO
+    // const data = this.createFromForm();
+    // data.quotationItems = this.quotationitemInstance;
+    // this.confirmationService.confirm({
+    //   message: '确定打印当前数据吗? ',
+    //   header: '打印',
+    //   accept: () => {
+    //     this.quotationService.sendToServer(data).subscribe(res => {
+    //       // eslint-disable-next-line no-console
+    //       console.log(res.body);
+    //       this.quotationService.download(res.body);
+    //     });
+    //   }
+    // });
+    // this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+    // $event.preventDefault();
   }
 
   /**
    * 表单更新
    * @param quotation 
    */
-  protected updateForm(quotation: IQuotation): void {
-    this.quotation = quotation;
-    this.quotationFormService.resetForm(this.editForm, quotation);
-  }
+  // protected updateForm(quotation: IQuotation): void {
+  //   this.quotation = quotation;
+  //   this.quotationFormService.resetForm(this.editForm, quotation);
+  // }
 
 }

@@ -212,6 +212,18 @@
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>
+
+              <!-- 跳转到自定义的界面 -->
+              <button
+                type="submit"
+                [routerLink]="['/quotation', quotation.id, 'customize']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.output">Output</span>
+              </button>
+
             </div>
           </td>
         </tr>

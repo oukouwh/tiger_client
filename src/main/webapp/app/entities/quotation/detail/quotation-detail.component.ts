@@ -1,8 +1,8 @@
 /*
  * @Author: 王浩 
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: 王
- * @LastEditTime: 2022-12-13 10:38:52
+ * @LastEditors: TSTZ
+ * @LastEditTime: 2022-12-19 09:05:38
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/detail/quotation-detail.component.ts
  * @Description: 
  */
@@ -25,6 +25,7 @@ export class QuotationDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ quotation }) => {
       this.quotation = quotation;
+      console.log("this.quotation :" + this.quotation )
     });
   }
 
