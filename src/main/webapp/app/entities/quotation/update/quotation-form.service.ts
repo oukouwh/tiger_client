@@ -101,6 +101,8 @@ export class QuotationFormService {
       salesStaff: new FormControl(quotationRawValue.salesStaff),
       salesOffice: new FormControl(quotationRawValue.salesOffice),
       updateCount: new FormControl(quotationRawValue.updateCount),
+      // ADD 
+      
     });
   }
 

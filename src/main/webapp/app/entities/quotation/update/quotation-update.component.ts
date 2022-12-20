@@ -1,10 +1,10 @@
 /*
  * @Author: 王浩
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: 王浩
- * @LastEditTime: 2022-12-19 10:46:48
+ * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
+ * @LastEditTime: 2022-12-20 11:48:48
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/update/quotation-update.component.ts
- * @Description: 
+ * @Description:
  */
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';

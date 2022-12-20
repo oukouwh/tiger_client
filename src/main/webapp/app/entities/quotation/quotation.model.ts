@@ -1,8 +1,8 @@
 /*
  * @Author: TSTZ 
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 
- * @LastEditTime: 2022-12-14 09:57:28
+ * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
+ * @LastEditTime: 2022-12-20 11:19:51
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/quotation.model.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,6 +34,8 @@ export interface IQuotation {
   salesStaff?: string | null;
   salesOffice?: string | null;
   updateCount?: number | null;
+  // ADD
+  // quotationItems: any;
 }
 
 

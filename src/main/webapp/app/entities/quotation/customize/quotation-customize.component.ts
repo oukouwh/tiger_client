@@ -1,8 +1,8 @@
 /*
  * @Author: 王浩
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: 王浩
- * @LastEditTime: 2022-12-19 10:46:05
+ * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
+ * @LastEditTime: 2022-12-20 10:58:07
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/customize/quotation-customize.component.ts
  * @Description: 自定义界面
  */
@@ -15,6 +15,7 @@ import { PayMaster } from 'app/entities/enumerations/pay-master.model';
 import { PayFlag } from 'app/entities/enumerations/pay-flag.model';
 import { OrderAccuracy } from 'app/entities/enumerations/order-accuracy.model';
 import { SendFlag } from 'app/entities/enumerations/send-flag.model';
+import { IQuotationitem } from 'app/entities/quotationitem/quotationitem.model';
 
 @Component({
   selector: 'jhi-quotation-customize',
@@ -23,6 +24,7 @@ import { SendFlag } from 'app/entities/enumerations/send-flag.model';
 })
 export class QuotationCustomizeComponent implements OnInit {
   quotation: IQuotation | null = null;
+  quotationItems: IQuotationitem | null = null;
   payMasterValues = Object.keys(PayMaster);
   payFlagValues = Object.keys(PayFlag);
   orderAccuracyValues = Object.keys(OrderAccuracy);
@@ -40,7 +42,8 @@ export class QuotationCustomizeComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ quotation }) => {
       this.quotation = quotation;
-      console.log(this.quotation)
+      // console.log(this.quotation)
+      console.log(this.editForm)
       if (quotation) {
         this.updateForm(quotation);
       }

@@ -1,3 +1,11 @@
+/*
+ * @Author: 王浩
+ * @Date: 2022-12-09 15:16:00
+ * @LastEditors: 王浩
+ * @LastEditTime: 2022-12-20 10:46:44
+ * @FilePath: /tiger_client/src/main/webapp/app/entities/quotationitem/service/quotationitem.service.ts
+ * @Description: 
+ */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,35 +24,60 @@ export type EntityArrayResponseType = HttpResponse<IQuotationitem[]>;
 export class QuotationitemService {
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/quotationitems');
 
-  constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
+  constructor(
+    protected http: HttpClient, 
+    protected applicationConfigService: ApplicationConfigService
+  ) { }
 
   create(quotationitem: NewQuotationitem): Observable<EntityResponseType> {
-    return this.http.post<IQuotationitem>(this.resourceUrl, quotationitem, { observe: 'response' });
+    return this.http.post<IQuotationitem>(
+      this.resourceUrl, quotationitem, { observe: 'response' }
+    );
   }
 
   update(quotationitem: IQuotationitem): Observable<EntityResponseType> {
-    return this.http.put<IQuotationitem>(`${this.resourceUrl}/${this.getQuotationitemIdentifier(quotationitem)}`, quotationitem, {
+    return this.http.put<IQuotationitem>(
+      `${this.resourceUrl}/${this.getQuotationitemIdentifier(quotationitem)}`, quotationitem, {
       observe: 'response',
     });
   }
 
   partialUpdate(quotationitem: PartialUpdateQuotationitem): Observable<EntityResponseType> {
-    return this.http.patch<IQuotationitem>(`${this.resourceUrl}/${this.getQuotationitemIdentifier(quotationitem)}`, quotationitem, {
+    return this.http.patch<IQuotationitem>(
+      `${this.resourceUrl}/${this.getQuotationitemIdentifier(quotationitem)}`, quotationitem, {
       observe: 'response',
     });
   }
 
+  /**
+   * 根据ID查询
+   * @param id 
+   * @returns 
+   */
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<IQuotationitem>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    console.log("根据ID查询START")
+    return this.http.get<IQuotationitem>(
+      `${this.resourceUrl}/${id}`, { observe: 'response' }
+    );
   }
 
+  /**
+   * 查询
+   * @param req 
+   * @returns 
+   */
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IQuotationitem[]>(this.resourceUrl, { params: options, observe: 'response' });
+    console.log("初期化请求接口START")
+    return this.http.get<IQuotationitem[]>(
+      this.resourceUrl, { params: options, observe: 'response' }
+    );
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http.delete(
+      `${this.resourceUrl}/${id}`, { observe: 'response' }
+    );
   }
 
   getQuotationitemIdentifier(quotationitem: Pick<IQuotationitem, 'id'>): number {

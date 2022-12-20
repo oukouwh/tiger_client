@@ -8,12 +8,8 @@
         <span jhiTranslate="webAppApp.quotation.home.refreshListLabel">Refresh list</span>
       </button>
 
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-quotation"
-        [routerLink]="['/quotation/new']"
-      >
+      <button id="jh-create-entity" data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-quotation" [routerLink]="['/quotation/new']">
         <fa-icon icon="plus"></fa-icon>
         <span jhiTranslate="webAppApp.quotation.home.createLabel"> Create a new Quotation </span>
       </button>
@@ -38,17 +34,11 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="quotationNo">
-            <div class="d-flex">
-              <span jhiTranslate="webAppApp.quotation.quotationNo">Quotation No</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
+          <th scope="col">
+            <span jhiTranslate="webAppApp.quotation.quotationNo">Quotation No</span>
           </th>
-          <th scope="col" jhiSortBy="quotationName">
-            <div class="d-flex">
-              <span jhiTranslate="webAppApp.quotation.quotationName">Quotation Name</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
+          <th scope="col">
+            <span jhiTranslate="webAppApp.quotation.quotationName">Quotation Name</span>
           </th>
           <th scope="col" jhiSortBy="quotationDate">
             <div class="d-flex">
@@ -68,11 +58,8 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="deliveryItems">
-            <div class="d-flex">
-              <span jhiTranslate="webAppApp.quotation.deliveryItems">Delivery Items</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
+          <th scope="col">
+            <span jhiTranslate="webAppApp.quotation.deliveryItems">Delivery Items</span>
           </th>
           <th scope="col" jhiSortBy="deliveryDate">
             <div class="d-flex">
@@ -188,38 +175,27 @@
           <td>{{ quotation.updateCount }}</td>
           <td class="text-end">
             <div class="btn-group">
-              <button
-                type="submit"
-                [routerLink]="['/quotation', quotation.id, 'view']"
-                class="btn btn-info btn-sm"
-                data-cy="entityDetailsButton"
-              >
+              <button type="submit" [routerLink]="['/quotation', quotation.id, 'view']" class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton">
                 <fa-icon icon="eye"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
               </button>
 
-              <button
-                type="submit"
-                [routerLink]="['/quotation', quotation.id, 'edit']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
+              <button type="submit" [routerLink]="['/quotation', quotation.id, 'edit']" class="btn btn-primary btn-sm"
+                data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
               </button>
 
-              <button type="submit" (click)="delete(quotation)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+              <button type="submit" (click)="delete(quotation)" class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton">
                 <fa-icon icon="times"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
               </button>
 
               <!-- 跳转到自定义的界面 -->
-              <button
-                type="submit"
-                [routerLink]="['/quotation', quotation.id, 'customize']"
-                class="btn btn-primary btn-sm"
-                data-cy="entityEditButton"
-              >
+              <button type="submit" [routerLink]="['/quotation', quotation.id, 'customize']"
+                class="btn btn-primary btn-sm" data-cy="entityEditButton">
                 <fa-icon icon="pencil-alt"></fa-icon>
                 <span class="d-none d-md-inline" jhiTranslate="entity.action.output">Output</span>
               </button>
@@ -237,15 +213,8 @@
     </div>
 
     <div class="d-flex justify-content-center">
-      <ngb-pagination
-        [collectionSize]="totalItems"
-        [page]="page"
-        [pageSize]="itemsPerPage"
-        [maxSize]="5"
-        [rotate]="true"
-        [boundaryLinks]="true"
-        (pageChange)="navigateToPage($event)"
-      ></ngb-pagination>
+      <ngb-pagination [collectionSize]="totalItems" [page]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+        [rotate]="true" [boundaryLinks]="true" (pageChange)="navigateToPage($event)"></ngb-pagination>
     </div>
   </div>
 </div>

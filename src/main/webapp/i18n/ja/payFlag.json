@@ -2,8 +2,8 @@
   "webAppApp": {
     "PayFlag": {
       "null": "",
-      "Y": "Y",
-      "N": "N"
+      "Y": "あり",
+      "N": "なし"
     }
   }
 }
