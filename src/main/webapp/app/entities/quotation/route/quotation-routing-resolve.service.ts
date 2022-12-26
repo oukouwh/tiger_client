@@ -1,8 +1,8 @@
 /*
  * @Author: TSTZ 
  * @Date: 2022-12-09 15:15:59
- * @LastEditors: TSTZ 
- * @LastEditTime: 2022-12-12 12:00:59
+ * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
+ * @LastEditTime: 2022-12-26 16:52:09
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/route/quotation-routing-resolve.service.ts
  * @Description: 共通处理
  */

@@ -1,0 +1,27 @@
+{
+  "webAppApp": {
+    "foo": {
+      "home": {
+        "title": "Foos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Foo を追加",
+        "createOrEditLabel": "Fooを追加または編集",
+        "notFound": "No Foos found"
+      },
+      "created": "A new Foo is created with identifier {{ param }}",
+      "updated": "A Foo is updated with identifier {{ param }}",
+      "deleted": "A Foo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Foo {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Foo"
+      },
+      "id": "ID",
+      "fooName": "Foo Name",
+      "address": "Address",
+      "mobile": "Mobile",
+      "fooNo": "Foo No"
+    }
+  }
+}

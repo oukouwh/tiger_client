@@ -45,10 +45,14 @@ export type EntityArrayResponseType = HttpResponse<IQuotation[]>;
 
 @Injectable({ providedIn: 'root' })
 export class QuotationService {
+
+  /**
+   * URL
+   */
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/quotations');
 
   constructor(
-    protected http: HttpClient, 
+    protected http: HttpClient,
     protected applicationConfigService: ApplicationConfigService
   ) { }
 
@@ -160,8 +164,8 @@ export class QuotationService {
 
   /**
    * pdf打印接口
-   * @param data 
-   * @returns 
+   * @param data
+   * @returns
    */
   printPdf(data: any): Observable<any> {
     return this.http.post(SERVER_API_URL + 'api/download-excel', data, { observe: 'response', responseType: 'blob' });
@@ -170,8 +174,8 @@ export class QuotationService {
   /**
    * 下载功能
    *
-   * @param data 
-   * @param filename 
+   * @param data
+   * @param filename
    */
   public download(data: any, filename?: string): void {
     const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
@@ -194,5 +198,16 @@ export class QuotationService {
     console.log("SERVER_API_URL:" + SERVER_API_URL);
     console.log("data:" + data);
     return this.http.post(SERVER_API_URL + 'api/download-excel', data, { observe: 'response', responseType: 'blob' });
+  }
+
+  /**
+   * 自定义查询语句
+   * @param id
+   * @returns
+   */
+  findAllById(id: number): Observable<EntityResponseType> {
+    return this.http
+      .get<RestQuotation>(`${this.resourceUrl}/info/${id}`, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 }

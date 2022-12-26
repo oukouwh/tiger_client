@@ -38,6 +38,7 @@ type QuotationFormGroupContent = {
   salesStaff: FormControl<IQuotation['salesStaff']>;
   salesOffice: FormControl<IQuotation['salesOffice']>;
   updateCount: FormControl<IQuotation['updateCount']>;
+  quotationItems: FormControl<IQuotation['quotationItems']>;
 };
 
 export type QuotationFormGroup = FormGroup<QuotationFormGroupContent>;
@@ -102,7 +103,7 @@ export class QuotationFormService {
       salesOffice: new FormControl(quotationRawValue.salesOffice),
       updateCount: new FormControl(quotationRawValue.updateCount),
       // ADD 
-      
+      quotationItems: new FormControl(quotationRawValue.updateCount),
     });
   }
 

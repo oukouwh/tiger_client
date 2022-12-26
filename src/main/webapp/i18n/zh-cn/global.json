@@ -10,6 +10,7 @@
         "quotation": "Quotation",
         "quotationitem": "Quotationitem",
         "customer": "Customer",
+        "foo": "Foo",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

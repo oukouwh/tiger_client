@@ -263,3 +263,12 @@ npm config set legacy-peer-deps true
 ```
 npm audit fix
 ```
+
+## ADD json template
+```
+.jhipster folder add xx.json file
+```
+### project path open cmd 
+```
+ jhipster entity xxx.json
+```

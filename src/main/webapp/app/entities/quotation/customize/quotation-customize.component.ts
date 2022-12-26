@@ -2,7 +2,7 @@
  * @Author: 王浩
  * @Date: 2022-12-09 15:15:59
  * @LastEditors: TSTZ 53590202+oukouwh@users.noreply.github.com
- * @LastEditTime: 2022-12-20 10:58:07
+ * @LastEditTime: 2022-12-26 14:48:05
  * @FilePath: /tiger_client/src/main/webapp/app/entities/quotation/customize/quotation-customize.component.ts
  * @Description: 自定义界面
  */
@@ -36,14 +36,14 @@ export class QuotationCustomizeComponent implements OnInit {
     protected quotationFormService: QuotationFormService,
   ) { }
 
-  editForm: QuotationFormGroup = this.quotationFormService.createQuotationFormGroup();
-  trackId = (_index: number, item: IQuotation): number => this.quotationService.getQuotationIdentifier(item);
+  customizeForm: QuotationFormGroup = this.quotationFormService.createQuotationFormGroup();
+  // trackId = (_index: number, item: IQuotation): number => this.quotationService.getQuotationIdentifier(item);
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ quotation }) => {
       this.quotation = quotation;
       // console.log(this.quotation)
-      console.log(this.editForm)
+      console.log(this.customizeForm)
       if (quotation) {
         this.updateForm(quotation);
       }
@@ -56,7 +56,7 @@ export class QuotationCustomizeComponent implements OnInit {
    */
   protected updateForm(quotation: IQuotation): void {
     this.quotation = quotation;
-    this.quotationFormService.resetForm(this.editForm, quotation);
+    this.quotationFormService.resetForm(this.customizeForm, quotation);
   }
 
   printPDF(): void {

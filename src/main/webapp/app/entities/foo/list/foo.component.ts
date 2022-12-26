@@ -4,19 +4,19 @@ import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { IQuotation } from '../quotation.model';
+import { IFoo } from '../foo.model';
 
 import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
-import { EntityArrayResponseType, QuotationService } from '../service/quotation.service';
-import { QuotationDeleteDialogComponent } from '../delete/quotation-delete-dialog.component';
+import { EntityArrayResponseType, FooService } from '../service/foo.service';
+import { FooDeleteDialogComponent } from '../delete/foo-delete-dialog.component';
 
 @Component({
-  selector: 'jhi-quotation',
-  templateUrl: './quotation.component.html',
+  selector: 'jhi-foo',
+  templateUrl: './foo.component.html',
 })
-export class QuotationComponent implements OnInit {
-  quotations?: IQuotation[];
+export class FooComponent implements OnInit {
+  foos?: IFoo[];
   isLoading = false;
 
   predicate = 'id';
@@ -27,26 +27,22 @@ export class QuotationComponent implements OnInit {
   page = 1;
 
   constructor(
-    protected quotationService: QuotationService,
+    protected fooService: FooService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
     protected modalService: NgbModal
   ) {}
 
-  trackId = (_index: number, item: IQuotation): number => this.quotationService.getQuotationIdentifier(item);
+  trackId = (_index: number, item: IFoo): number => this.fooService.getFooIdentifier(item);
 
   ngOnInit(): void {
     this.load();
   }
 
-  /**
-   * 删除按钮压下之后的操作
-   * @param quotation 
-   */
-  delete(quotation: IQuotation): void {
-    // 打开删除界面Component
-    const modalRef = this.modalService.open(QuotationDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.quotation = quotation;
+  delete(foo: IFoo): void {
+    const modalRef = this.modalService.open(FooDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.foo = foo;
+    // unsubscribe not needed because closed completes on modal close
     modalRef.closed
       .pipe(
         filter(reason => reason === ITEM_DELETED_EVENT),
@@ -76,14 +72,9 @@ export class QuotationComponent implements OnInit {
   }
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
-    return combineLatest([
-      this.activatedRoute.queryParamMap, 
-      this.activatedRoute.data
-    ]).pipe(
+    return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
-      switchMap(() => this.queryBackend(
-        this.page, this.predicate, this.ascending
-      ))
+      switchMap(() => this.queryBackend(this.page, this.predicate, this.ascending))
     );
   }
 
@@ -98,10 +89,10 @@ export class QuotationComponent implements OnInit {
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     this.fillComponentAttributesFromResponseHeader(response.headers);
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    this.quotations = dataFromBody;
+    this.foos = dataFromBody;
   }
 
-  protected fillComponentAttributesFromResponseBody(data: IQuotation[] | null): IQuotation[] {
+  protected fillComponentAttributesFromResponseBody(data: IFoo[] | null): IFoo[] {
     return data ?? [];
   }
 
@@ -117,7 +108,7 @@ export class QuotationComponent implements OnInit {
       size: this.itemsPerPage,
       sort: this.getSortQueryParam(predicate, ascending),
     };
-    return this.quotationService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    return this.fooService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
   }
 
   protected handleNavigation(page = this.page, predicate?: string, ascending?: boolean): void {
