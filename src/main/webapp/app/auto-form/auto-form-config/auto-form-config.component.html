@@ -1,0 +1,144 @@
+<div *ngIf="item.toggle" class="toggle-Wrapper">
+  <div class="form-group">
+    <label>必須フラグ</label>
+    <i *ngIf="item.required" (click)="item.required=false" class="fa fa-toggle-on red"></i>
+    <i *ngIf="!item.required" (click)="item.required=true" class="fa fa-toggle-off"></i>
+    <span class="pull-right ucfirst">{{item.ctrlType}}</span>
+  </div>
+  <div class="form-group">
+    <label>ラベル</label>
+    <input class="form-control" type="text" [(ngModel)]="item.label" />
+  </div>
+  <div class="form-group">
+    <label>フィールド名</label>
+    <input class="form-control" type="text" [(ngModel)]="item.fieldName" />
+  </div>
+  <div class="form-group">
+    <label>プレースホルダー</label>
+    <input class="form-control" type="text" [(ngModel)]="item.placeholder" />
+  </div>
+  <div class="form-group">
+    <label>正規表現</label>
+    <input class="form-control" type="text" [(ngModel)]="item.ctrlFieldValidateRules" />
+  </div>
+  <div *ngIf="item.ctrlFieldValidateRules" class="form-group">
+    <label>Error text</label>
+    <input class="form-control" type="text" [(ngModel)]="item.errorText" />
+  </div>
+  <div class="form-group">
+    <label>表示桁</label>
+    <input class="form-control" type="text" [(ngModel)]="item.ctrlWidth" />
+  </div>
+  <div class="form-group">
+    <label>文字表示位置</label>
+    <input class="form-control" type="text" [(ngModel)]="item.ctrlTextAlign" />
+  </div>
+  <div class="form-group">
+    <label>ラベル位置</label>
+    <input class="form-control chkAlign" type="checkbox" [(ngModel)]="item.ctrLabelDirect" />
+  </div>
+  <div *ngIf="item.ctrlType=='layout'" class="form-group">
+    <label>列の数</label>
+    <input class="form-control" type="text" [(ngModel)]="item.columnCnt" />
+  </div>
+  <!-- number -->
+  <div *ngIf="item.ctrlType=='number'" class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label>Min</label>
+        <input class="form-control" type="text" [(ngModel)]="item.min" />
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label>Max</label>
+        <input class="form-control" type="text" [(ngModel)]="item.max" />
+      </div>
+    </div>
+  </div>
+
+  <!-- radio || checkbox || dropdown-list -->
+  <div *ngIf="['radio','dropdown-list','table'].includes(item.ctrlType)">
+    <div class="form-group">
+      <label>エンティティ名</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].name" />
+    </div>
+    <div class="form-group">
+      <label>インスタンス名</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].instance" />
+    </div>
+    <div class="form-group">
+      <label>インターフェース名</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].interface" />
+    </div>
+    <div class="form-group">
+      <label>サービス名</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].service" />
+    </div>
+    <div class="form-group">
+      <label>表示用コラム名</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].selectKey" />
+    </div>
+    <div class="form-group">
+      <label>フィルターキー</label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].valueItem" />
+    </div>
+    <div class="form-group">
+      <label>Owner Field </label>
+      <input class="form-control" type="text" [(ngModel)]="item.entities[0].ownerField" />
+    </div>
+  </div>
+  <div *ngIf="['radio','dropdown-list','table','checkbox'].includes(item.ctrlType)">
+    <div class="row">
+      <div class="col-5">
+        <div class="form-group">
+          <label>Label</label>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+          <label>Value</label>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <label>Action</label>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let i of item.values; let valueIndex=index;" class="row">
+      <div class="col-5">
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="i.label" />
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="i.value" />
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <label (click)="item.values.splice(valueIndex,1)">remove</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5">
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="value.label" />
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="form-group">
+          <input class="form-control" type="text" [(ngModel)]="value.value" />
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <label (click)="addValue(item.values)">Add</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
