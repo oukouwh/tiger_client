@@ -1,0 +1,255 @@
+<div>
+  <div *ngIf="item.ctrlType=='text'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="text" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}"
+      maxLength="{{item.ctrlWidth?item.ctrlWidth:'9999'}}" [style.text-align]="item.ctrlTextAlign">
+  </div>
+  <div *ngIf="item.ctrlType=='layout'">
+    <div *ngIf="item.columnCnt=='1'" class="row form-group">
+      <div class="col-12">
+        <ng-template #recursiveList1 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list;let i= index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[0].length > 0"
+          [ngClass]="{'empty':item.subFields[0].length == 0}" (dndDrop)="onDropSub($event,item.subFields[0])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList1; context:{ $implicit: item.subFields[0] }">
+          </ng-container>
+        </section>
+      </div>
+    </div>
+    <div *ngIf="item.columnCnt=='2'" class="row form-group">
+      <div class="col-6">
+        <ng-template #recursiveList2 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list;let i= index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[0].length > 0"
+          [ngClass]="{'empty':item.subFields[0].length ==0}" (dndDrop)="onDropSub($event,item.subFields[0])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList2; context:{ $implicit: item.subFields[0] }">
+          </ng-container>
+        </section>
+      </div>
+      <div class="col-6">
+        <ng-template #recursiveList3 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list;let i= index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[1].length > 0"
+          [ngClass]="{'empty':item.subFields[1].length ==0}" (dndDrop)="onDropSub($event,item.subFields[1])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList3; context:{ $implicit: item.subFields[1] }">
+          </ng-container>
+        </section>
+      </div>
+    </div>
+    <div *ngIf="item.columnCnt=='3'" class="row form-group">
+      <div class="col-4">
+        <ng-template #recursiveList4 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list;let i = index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[0].length > 0"
+          [ngClass]="{'empty':item.subFields[0].length ==0}" (dndDrop)="onDropSub($event,item.subFields[0])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList4; context:{ $implicit: item.subFields[0] }">
+          </ng-container>
+        </section>
+      </div>
+      <div class="col-4">
+        <ng-template #recursiveList5 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list;let i = index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[1].length > 0"
+          [ngClass]="{'empty':item.subFields[1].length ==0}" (dndDrop)="onDropSub($event,item.subFields[1])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList5; context:{ $implicit: item.subFields[1] }">
+          </ng-container>
+        </section>
+      </div>
+      <div class="col-4">
+        <ng-template #recursiveList6 let-list>
+          <div dndPlaceholderRef class="dndPlaceholder"></div>
+          <div *ngFor="let item of list; let i=index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+            (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+            (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+            <div class="row form-group">
+              <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+              <div class="col-9">
+                <app-auto-form-hidden [item]="item"></app-auto-form-hidden>
+              </div>
+              <div class="col-2">
+                <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+                <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+                <i (click)="removeField(i,list)" class="fa fa-trash pull-right"></i>
+              </div>
+              <app-auto-form-config [item]="item"></app-auto-form-config>
+            </div>
+          </div>
+        </ng-template>
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[2].length > 0"
+          [ngClass]="{'empty':item.subFields[2].length ==0}" (dndDrop)="onDropSub($event,item.subFields[2])"
+          class="dndDropArea">
+          <ng-container *ngTemplateOutlet="recursiveList6; context:{ $implicit: item.subFields[2] }">
+          </ng-container>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="item.ctrlType=='email'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="email" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+  </div>
+  <div *ngIf="item.ctrlType=='phone'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="text" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+  </div>
+  <div *ngIf="item.ctrlType=='number'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="number" class="form-control" id="{{item.fieldName}}" min="{{item.min}}" max="{{item.max}}"
+      placeholder="{{item.placeholder}}">
+  </div>
+  <div *ngIf="item.ctrlType=='date'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="date" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+  </div>
+  <div *ngIf="item.ctrlType=='datetime-local'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <input type="datetime-local" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+  </div>
+  <div *ngIf="item.ctrlType=='textarea'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <textarea class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}"></textarea>
+  </div>
+  <div *ngIf="item.ctrlType=='file'">
+    <label>{{item.label}} (File can't be uploaded right now)</label> <label *ngIf="item.required"
+      class="text-danger">*</label>
+    <input type="file" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+    <small class="form-text text-danger">(File can't be uploaded right now)</small>
+  </div>
+  <div *ngIf="item.ctrlType=='paragraph'">
+    <p class="form-text">{{item?.placeholder}}</p>
+  </div>
+  <div *ngIf="item.ctrlType=='dropdown-list'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <select class="form-control" id="{{item.fieldName}}">
+      <option *ngFor="let v of item.values" [value]="v.value">{{v.label}}</option>
+    </select>
+  </div>
+  <div *ngIf="item.ctrlType=='checkbox'">
+    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <div *ngFor="let v of item.values" class="inline-form-group">
+      <label class="cust-check-bx">
+        <input type="checkbox" [value]="v.value" name="{{item.fieldName}}" (click)="toggleValue(v)"> {{v.label}}
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+  <div *ngIf="item.ctrlType=='radio'">
+    <label>{{item?.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <div *ngFor="let v of item.values" class="inline-form-group">
+      <label class="cust-check-bx">
+        <input type="radio" [value]="v.value" name="{{item.fieldName}}"> {{v.label}}
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+  <div *ngIf="item.ctrlType=='table'">
+    <label>{{item?.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
+    <table border="1">
+      <tr>
+        <ng-container *ngFor="let v of item.values">
+          <th>{{v.label}}</th>
+        </ng-container>
+      </tr>
+      <tr>
+        <ng-container *ngFor="let v of item.values">
+          <td>{{v.value}}</td>
+        </ng-container>
+      </tr>
+    </table>
+  </div>
+  <div *ngIf="item.ctrlType=='button'" class="btn-cont">
+    <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}" class="btn btn-primary"
+      id="{{item.fieldName}}">
+  </div>
+
+</div>
