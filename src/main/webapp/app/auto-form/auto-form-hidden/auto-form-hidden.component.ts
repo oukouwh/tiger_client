@@ -1,12 +1,10 @@
 /*
  * @Author: 王浩
  * @Date: 2022-12-30 11:37:49
- * @LastEditTime: 2022-12-30 11:42:16
+ * @LastEditTime: 2022-12-30 13:35:38
  * @FilePath: /tiger_client/src/main/webapp/app/auto-form/auto-form-hidden/auto-form-hidden.component.ts
  * @Description: Do not edit
  */
-/* eslint-disable @typescript-eslint/tslint/config */
-/* eslint-disable no-console */
 
 import { Component, OnInit, Input } from '@angular/core';
 import { field } from '../models/global.model';

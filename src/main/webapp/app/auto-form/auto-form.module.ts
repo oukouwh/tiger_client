@@ -1,4 +1,3 @@
-import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.component';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'app/shared/shared.module';
 import { autoFormState } from './auto-form.route';
@@ -14,7 +13,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { AutoFormComponent } from './main/auto-form.component';
 import { AutoFormConfigComponent } from './auto-form-config/auto-form-config.component';
-
+import { AutoFormCovertComponent } from './auto-form-covert/auto-form-covert.component';
+import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.component';
 
 @NgModule({
   imports: [
@@ -34,6 +34,7 @@ import { AutoFormConfigComponent } from './auto-form-config/auto-form-config.com
     AutoFormComponent,
     AutoFormConfigComponent,
     AutoFormHiddenComponent,
+    AutoFormCovertComponent,
   ],
 })
 export class AutoFormModule { }
