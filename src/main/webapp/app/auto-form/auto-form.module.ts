@@ -15,6 +15,7 @@ import { AutoFormComponent } from './main/auto-form.component';
 import { AutoFormConfigComponent } from './auto-form-config/auto-form-config.component';
 import { AutoFormCovertComponent } from './auto-form-covert/auto-form-covert.component';
 import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.component';
+import { AutoFormListComponent } from './auto-form-list/auto-form-list.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.com
     AutoFormConfigComponent,
     AutoFormHiddenComponent,
     AutoFormCovertComponent,
+    AutoFormListComponent,
   ],
 })
 export class AutoFormModule { }

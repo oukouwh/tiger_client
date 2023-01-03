@@ -1,0 +1,16 @@
+<!--
+ * @Author: 王浩
+ * @Date: 2023-01-03 09:29:11
+ * @LastEditTime: 2023-01-03 10:07:08
+ * @FilePath: /tiger_client/src/main/webapp/app/auto-form/auto-form-list/auto-form-list.component.html
+ * @Description: Do not edit
+-->
+<h4>{{title}}</h4>
+<p>{{description}}</p>
+<div class="fields" *ngFor="let item of fieldModels" >
+  <div class="field pointer shadow-bg" [dndDraggable]="item"
+  (dndEnd)="onDragEnd($event)">
+    <i [ngClass]="item.icon" class="fa pull-left"></i>
+    <h5>{{item.label}}</h5>
+  </div>
+</div>
