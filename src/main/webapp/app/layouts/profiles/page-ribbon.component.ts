@@ -1,3 +1,10 @@
+/*
+ * @Author: 王浩
+ * @Date: 2022-12-09 15:01:23
+ * @LastEditTime: 2023-01-04 09:29:29
+ * @FilePath: /tiger_client/src/main/webapp/app/layouts/profiles/page-ribbon.component.ts
+ * @Description: Do not edit
+ */
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,9 +23,14 @@ import { ProfileService } from './profile.service';
 export class PageRibbonComponent implements OnInit {
   ribbonEnv$?: Observable<string | undefined>;
 
-  constructor(private profileService: ProfileService) {}
+  constructor(
+    private profileService: ProfileService
+    ) { }
 
   ngOnInit(): void {
-    this.ribbonEnv$ = this.profileService.getProfileInfo().pipe(map(profileInfo => profileInfo.ribbonEnv));
+    this.ribbonEnv$ = this.profileService.getProfileInfo().pipe(
+      map(profileInfo => profileInfo.ribbonEnv
+        )
+      );
   }
 }

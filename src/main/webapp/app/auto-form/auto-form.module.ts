@@ -12,10 +12,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { CalendarModule } from 'primeng/calendar';
 import { AutoFormComponent } from './main/auto-form.component';
-import { AutoFormConfigComponent } from './auto-form-config/auto-form-config.component';
-import { AutoFormCovertComponent } from './auto-form-covert/auto-form-covert.component';
-import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.component';
+// import { AutoFormConfigComponent } from './auto-form-config/auto-form-config.component';
+// import { AutoFormCovertComponent } from './auto-form-covert/auto-form-covert.component';
+// import { AutoFormHiddenComponent } from './auto-form-hidden/auto-form-hidden.component';
 import { AutoFormListComponent } from './auto-form-list/auto-form-list.component';
+import { AutoFormEditorComponent } from './auto-form-editor/auto-form-editor.component';
+import { DataTransferService } from './service/data-transfer.service';
+import { JsonDownloaderService } from './service/json-downloader.service';
+import { JsonReaderService } from './service/json-reader.service';
 
 @NgModule({
   imports: [
@@ -33,10 +37,16 @@ import { AutoFormListComponent } from './auto-form-list/auto-form-list.component
   ],
   declarations: [
     AutoFormComponent,
-    AutoFormConfigComponent,
-    AutoFormHiddenComponent,
-    AutoFormCovertComponent,
+    // AutoFormConfigComponent,
+    // AutoFormHiddenComponent,
+    // AutoFormCovertComponent,
     AutoFormListComponent,
+    AutoFormEditorComponent
   ],
+  providers: [
+    JsonReaderService,
+    JsonDownloaderService,
+    DataTransferService
+  ]
 })
 export class AutoFormModule { }

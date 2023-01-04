@@ -1,48 +1,50 @@
 /*
  * @Author: 王浩
  * @Date: 2022-12-29 16:26:02
- * @LastEditTime: 2022-12-29 16:26:08
+ * @LastEditTime: 2023-01-04 14:48:13
  * @FilePath: /tiger_client/src/main/webapp/app/auto-form/models/global.model.ts
  * @Description: Do not edit
  */
-export class field {
-  _id?: any;
-  fieldName?: any;
-  fieldType?: any;
-  icon?: any;
-  toggle?: any;
-  required?: any;
-  ctrlFieldValidateRules?: any;
-  errorText?: any;
-  label?: any;
-  description?: any;
-  placeholder?: any;
-  className?: any;
-  subtype?: any;
-  handle?: any;
-  min?: number;
-  max?: number;
-  inline?: any;
-  value?: any;
+export interface IField {
+  _id?: any | undefined;
+  fieldName?: any | undefined;
+  fieldType?: any | undefined;
+  icon?: any | undefined;
+  toggle?: any | undefined;
+  required: boolean | undefined;
+  ctrlFieldValidateRules?: any | undefined;
+  errorText?: any | undefined;
+  label?: any | undefined;
+  description?: any | undefined;
+  placeholder?: any | undefined;
+  className?: any | undefined;
+  subtype?: any | undefined;
+  handle?: any | undefined;
+  min?: number | undefined;
+  max?: number | undefined;
+  inline?: any | undefined;
+  value?: any | undefined;
   values?: Array<value>;
-  subFields?: Array<field[]>;
-  columnCnt?: any;
-  columns?: Array<any>;
-  level?: number;
-  ctrlRowNo?: any; //行No
-  ctrlItemNo?: any; //枝番
-  ctrlGroupNo?: any; //グループ番号
-  ctrlFieldName?: any; //フィールド名
-  ctrlType?: any; //項目種別／Control
-  ctrlInOut?: any; //入出力
-  ctrlFormat?: any; //表示フォーマット
-  ctrlTextAlign?: any; //文字表示位置
-  ctrlWidth?: any; //表示桁
-  ctrlRequiredFlg?: any; //必須項目フラグ
-  ctrlEncode?: any; //文字種
-  entities?: Array<any>; //エンティティ
-  ctrLabelDirect?: any; // ラベル並べ位置（'0': 関連コンポーネントと同じ行）
+  subFields: Array<IField[]> | undefined;
+  columnCnt?: any | undefined;
+  columns?: Array<any> | undefined;
+  level?: number | undefined;
+  ctrlRowNo?: any | undefined; //行No
+  ctrlItemNo?: any | undefined; //枝番
+  ctrlGroupNo?: any | undefined; //グループ番号
+  ctrlFieldName: any | undefined; //フィールド名
+  ctrlType: any | undefined; //項目種別／Control
+  ctrlInOut: any | undefined; //入出力
+  ctrlFormat: any | undefined; //表示フォーマット
+  ctrlTextAlign: any | undefined; //文字表示位置
+  ctrlWidth: any | undefined; //表示桁
+  ctrlRequiredFlg: any | undefined; //必須項目フラグ
+  ctrlEncode: any | undefined; //文字種
+  entities: Array<any>; //エンティティ
+  ctrLabelDirect: any | undefined; // ラベル並べ位置（'0': 関連コンポーネントと同じ行）
 }
+
+export type NewField = Omit<IField, 'id'> & { id: null };
 
 export class value {
   label?: any = '';
@@ -50,17 +52,17 @@ export class value {
 }
 
 export class outputField {
-  ctrlRowNo?: any; //行No
-  ctrlItemNo?: any; //枝番
-  ctrlGroupNo?: any; //グループ番号
-  ctrlColNo?: any; //列番号
-  ctrlFieldName?: any; //フィールド名
-  ctrlType?: any; //項目種別／Control
-  ctrlInOut?: any; //入出力
-  ctrlFormat?: any; //表示フォーマット
-  ctrlTextAlign?: any; //文字表示位置
-  ctrlWidth?: any; //表示桁
-  ctrlRequiredFlg?: any; //必須項目フラグ
-  ctrlEncode?: any; //文字種
-  ctrlFieldValidateRules?: any; //文字種
+  ctrlRowNo?: any | undefined; //行No
+  ctrlItemNo?: any | undefined; //枝番
+  ctrlGroupNo?: any | undefined; //グループ番号
+  ctrlColNo?: any | undefined; //列番号
+  ctrlFieldName?: any | undefined; //フィールド名
+  ctrlType?: any | undefined; //項目種別／Control
+  ctrlInOut?: any | undefined; //入出力
+  ctrlFormat?: any | undefined; //表示フォーマット
+  ctrlTextAlign?: any | undefined; //文字表示位置
+  ctrlWidth?: any | undefined; //表示桁
+  ctrlRequiredFlg?: any | undefined; //必須項目フラグ
+  ctrlEncode?: any | undefined; //文字種
+  ctrlFieldValidateRules?: any | undefined; //文字種
 }

@@ -27,6 +27,14 @@
             </span>
           </a>
         </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="auto-form" (click)="collapseNavbar()">
+              <span>
+                  <fa-icon icon="bars"></fa-icon>
+                  <span>Auto Former</span>
+              </span>
+          </a>
+      </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
           *ngSwitchCase="true"

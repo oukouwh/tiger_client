@@ -1,13 +1,14 @@
 /*
  * @Author: 王浩
  * @Date: 2022-12-29 16:22:42
- * @LastEditTime: 2022-12-29 16:26:38
+ * @LastEditTime: 2023-01-04 11:45:56
  * @FilePath: /tiger_client/src/main/webapp/app/auto-form/auto-form-config/auto-form-config.component.ts
  * @Description: 拖拽模版文件
  */
 
 import { Component, OnInit, Input } from '@angular/core';
-import { field, value } from '../models/global.model';
+import { value } from '../models/global.model';
+import { IField } from './../models/global.model';
 
 @Component({
   selector: 'app-auto-form-config',
@@ -15,7 +16,7 @@ import { field, value } from '../models/global.model';
   styleUrls: ['./auto-form-config.component.scss']
 })
 export class AutoFormConfigComponent implements OnInit {
-  @Input() item?: field;
+  @Input() item?: IField;
   value: value = {
     label: '',
     value: ''

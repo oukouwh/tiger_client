@@ -1,0 +1,102 @@
+<div *ngIf="model && !report" class="padding20 white-bg minHeight">
+  <div class="row">
+    <div class="col-12">
+      <div class="btn-cont">
+        <div class="row">
+          <div>対象Entity:</div>
+          <p-dropdown [options]="pages" [(ngModel)]="selectedPage" placeholder="対象画面を選択ください" [showClear]="true"
+            (onChange)="chgSelectedItem($event)"></p-dropdown>
+          <button (click)="outputFormFile()" class="btn btn-primary pull-right" style="margin-right:3px;">Download Form
+            File <i class="fa fa-external-link"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spacer30"></div>
+  <div class="row">
+    <div class="col-4">
+      <div #divList>
+        <div class="row">
+          <span class="inline">
+            <a (click)="goDown()"><i class="fa fa-sort-desc"></i>移動↓</a>
+          </span>
+          <span class="inline">
+            <a (click)="goUp()"><i class="fa fa-sort-asc"></i>移動↑</a>
+          </span>
+          <span class="inline">
+            <a (click)="goReset()"><i class="fa fa-undo"></i>リセット</a>
+          </span>
+        </div>
+        <app-auto-form-list [title]="'コンポネント選択'">
+        </app-auto-form-list>
+      </div>
+    </div>
+    <div class="col-8">
+
+      <div class="form-group">
+        <h2><input class="form-control" type="text" [(ngModel)]="model.fieldName" /></h2>
+        <input class="form-control" type="text" [(ngModel)]="model.description" />
+      </div>
+
+      <!--a dropzone-->
+      <!--to allow dropping content that is not [dndDraggable] set dndAllowExternal to true-->
+      <ng-template #recursiveList let-list>
+        <div dndPlaceholderRef class="dndPlaceholder"></div>
+        <div *ngFor="let item of list;let i= index;" class="field" [dndDraggable]="item" dndEffectAllowed="move"
+          (dndStart)="onDragStart($event)" (dndCopied)="onDragged(item, list, 'copy')"
+          (dndMoved)="onDragged(item, list, 'move')" (dndCanceled)="onDragged(item, list, 'none')">
+          <div class="row form-group">
+            <div class="col-1"><i class="fa fa-ellipsis-v dndHandle" dndHandle></i></div>
+            <div class="col-9">
+              <!-- <app-auto-form-hidden [item]="item"></app-auto-form-hidden> -->
+            </div>
+            <div class="col-2">
+              <i *ngIf="item.toggle" (click)="item.toggle=false" class="fa fa-chevron-up pull-right"></i>
+              <i *ngIf="!item.toggle" (click)="item.toggle=true" class="fa fa-chevron-down pull-right"></i>
+              <i (click)="removeField(i)" class="fa fa-trash pull-right"></i>
+            </div>
+          </div>
+          <div>
+            <!-- <app-auto-form-config [item]="item"></app-auto-form-config> -->
+          </div>
+        </div>
+      </ng-template>
+      <section dndDropzone (dndDragover)="onDragover($event)" (dndDrop)="onDrop($event,model.attributes)"
+        class="dndDropArea" [ngClass]="{'empty':model.attributes.length == 0}"
+        [style.backgroundColor]="model.theme.bgColor" [style.color]="model.theme.textColor">
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: model.attributes }">
+        </ng-container>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="model" class="container marginT60  marginB30" style="max-width:500px;">
+
+  <div class="row" style="padding:30px;" [style.backgroundColor]="model.theme.bgColor"
+    [style.color]="model.theme.textColor">
+    <div class="col-12">
+      <h2>{{model.fieldName}}</h2>
+    </div>
+    <div class="col-12">
+      <p>{{model.description}}</p>
+    </div>
+    <div *ngIf="success" class="col-12">
+      <div class="form-group">
+        <label>Your form has been submitted.</label>
+      </div>
+    </div>
+    <form class="ftheme">
+      <div *ngIf="!success" class="col-12">
+        <div *ngFor="let item of model.attributes" class="form-group">
+          <!-- <app-auto-form-hidden [item]="item"></app-auto-form-hidden> -->
+        </div>
+        <p (click)="setShowTrue()" class="marginT60 pointer">Show developer data</p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<pre *ngIf="show && model">
+    {{model|json}}
+</pre>

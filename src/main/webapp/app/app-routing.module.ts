@@ -1,3 +1,11 @@
+import { AutoFormEditorComponent } from './auto-form/auto-form-editor/auto-form-editor.component';
+/*
+ * @Author: 王浩
+ * @Date: 2022-12-09 15:01:23
+ * @LastEditTime: 2023-01-04 09:13:24
+ * @FilePath: /tiger_client/src/main/webapp/app/app-routing.module.ts
+ * @Description: Do not edit
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -8,6 +16,7 @@ import { Authority } from 'app/config/authority.constants';
 
 import { UserRouteAccessService } from 'app/core/auth/user-route-access.service';
 
+const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
 @NgModule({
   imports: [
     RouterModule.forRoot(
@@ -29,11 +38,14 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
         },
         {
+          path: 'auto-form',
+          component: AutoFormEditorComponent
+        },
+        {
           path: '',
           loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
         },
-        navbarRoute,
-        ...errorRoute,
+        ...LAYOUT_ROUTES
       ],
       { enableTracing: DEBUG_INFO_ENABLED }
     ),

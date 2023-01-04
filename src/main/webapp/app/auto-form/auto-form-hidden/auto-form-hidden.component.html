@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="item.ctrlType=='text'">
+  <div *ngIf="item?.ctrlType=='text'">
     <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
     <input type="text" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}"
       maxLength="{{item.ctrlWidth?item.ctrlWidth:'9999'}}" [style.text-align]="item.ctrlTextAlign">
@@ -55,10 +55,10 @@
             </div>
           </div>
         </ng-template>
-        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[0].length > 0"
-          [ngClass]="{'empty':item.subFields[0].length ==0}" (dndDrop)="onDropSub($event,item.subFields[0])"
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item?.subFields[0].length > 0"
+          [ngClass]="{'empty':item.subFields[0].length ==0}" (dndDrop)="onDropSub($event,item?.subFields[0]?)"
           class="dndDropArea">
-          <ng-container *ngTemplateOutlet="recursiveList2; context:{ $implicit: item.subFields[0] }">
+          <ng-container *ngTemplateOutlet="recursiveList2; context:{ $implicit: item?.subFields[0] }">
           </ng-container>
         </section>
       </div>
@@ -82,8 +82,8 @@
             </div>
           </div>
         </ng-template>
-        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[1].length > 0"
-          [ngClass]="{'empty':item.subFields[1].length ==0}" (dndDrop)="onDropSub($event,item.subFields[1])"
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item?.subFields[1].length > 0"
+          [ngClass]="{'empty':item.subFields[1].length ==0}" (dndDrop)="onDropSub($event,item?.subFields[1])"
           class="dndDropArea">
           <ng-container *ngTemplateOutlet="recursiveList3; context:{ $implicit: item.subFields[1] }">
           </ng-container>
@@ -138,8 +138,11 @@
             </div>
           </div>
         </ng-template>
-        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[1].length > 0"
-          [ngClass]="{'empty':item.subFields[1].length ==0}" (dndDrop)="onDropSub($event,item.subFields[1])"
+        <section dndDropzone
+          (dndDragover)="onDragover($event)"
+          [dndDisableIf]="item.subFields[1].length > 0"
+          [ngClass]="{'empty':item.subFields[1].length ==0}"
+          (dndDrop)="onDropSub($event,item.subFields[1])"
           class="dndDropArea">
           <ng-container *ngTemplateOutlet="recursiveList5; context:{ $implicit: item.subFields[1] }">
           </ng-container>
@@ -165,8 +168,8 @@
             </div>
           </div>
         </ng-template>
-        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item.subFields[2].length > 0"
-          [ngClass]="{'empty':item.subFields[2].length ==0}" (dndDrop)="onDropSub($event,item.subFields[2])"
+        <section dndDropzone (dndDragover)="onDragover($event)" [dndDisableIf]="item?.subFields[2]?.length? > 0"
+          [ngClass]="{'empty':item?.subFields[2].length ==0}" (dndDrop)="onDropSub($event,item.subFields[2])"
           class="dndDropArea">
           <ng-container *ngTemplateOutlet="recursiveList6; context:{ $implicit: item.subFields[2] }">
           </ng-container>
@@ -174,17 +177,17 @@
       </div>
     </div>
   </div>
-  <div *ngIf="item.ctrlType=='email'">
+  <div *ngIf="item?.ctrlType=='email'">
     <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
     <input type="email" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
   </div>
-  <div *ngIf="item.ctrlType=='phone'">
+  <div *ngIf="item?.ctrlType=='phone'">
     <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
-    <input type="text" class="form-control" id="{{item.fieldName}}" placeholder="{{item.placeholder}}">
+    <input type="text" class="form-control" id="{{item?.fieldName}}" placeholder="{{item?.placeholder}}">
   </div>
-  <div *ngIf="item.ctrlType=='number'">
-    <label>{{item.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
-    <input type="number" class="form-control" id="{{item.fieldName}}" min="{{item.min}}" max="{{item.max}}"
+  <div *ngIf="item?.ctrlType=='number'">
+    <label>{{item?.label}}</label> <label *ngIf="item?.required" class="text-danger">*</label>
+    <input type="number" class="form-control" id="{{item?.fieldName}}" min="{{item?.min}}" max="{{item?.max}}"
       placeholder="{{item.placeholder}}">
   </div>
   <div *ngIf="item.ctrlType=='date'">
@@ -234,7 +237,7 @@
   </div>
   <div *ngIf="item.ctrlType=='table'">
     <label>{{item?.label}}</label> <label *ngIf="item.required" class="text-danger">*</label>
-    <table border="1">
+    <table>
       <tr>
         <ng-container *ngFor="let v of item.values">
           <th>{{v.label}}</th>
@@ -248,8 +251,7 @@
     </table>
   </div>
   <div *ngIf="item.ctrlType=='button'" class="btn-cont">
-    <input type="{{item.subtype}}" (click)="submit()" value="{{item.label}}" class="btn btn-primary"
-      id="{{item.fieldName}}">
+    <input type="{{item?.subtype}}" (click)="submit()" value="{{item?.label}}" class="btn btn-primary" id="{{item?.fieldName}}"/>
   </div>
 
 </div>
