@@ -3,12 +3,7 @@
     "applicationType": "monolith",
     "authenticationType": "jwt",
     "baseName": "web_app",
-    "blueprints": [
-      {
-        "name": "generator-jhipster-tiger-entity-blueprint",
-        "version": "0.0.0"
-      }
-    ],
+    "blueprints": [],
     "buildTool": "maven",
     "cacheProvider": "ehcache",
     "clientFramework": "angularX",
@@ -34,10 +29,6 @@
     "monorepository": true,
     "nativeLanguage": "en",
     "otherModules": [
-      {
-        "name": "generator-jhipster-tiger-entity-blueprint",
-        "version": "0.0.0"
-      }
     ],
     "packageName": "com.mycompany.myapp",
     "pages": [],
