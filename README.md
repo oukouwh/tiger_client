@@ -264,6 +264,13 @@ npm config set legacy-peer-deps true
 npm audit fix
 ```
 
+### Generator-cmd
+#### project path
+- `tiger_client` - Vsocode open project
+- `Open Terminal` 
+```
+npm link ../generator-jhipster
+```
 ## ADD json template
 ```
 .jhipster folder add xx.json file
