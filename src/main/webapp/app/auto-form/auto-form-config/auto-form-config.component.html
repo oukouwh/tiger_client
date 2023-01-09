@@ -1,19 +1,17 @@
 <div *ngIf="item?.toggle" class="toggle-Wrapper">
   <div class="form-group">
     <label>必須フラグ</label>
-    <!-- <i *ngIf="item?.required" (click)="item.required=false" class="fa fa-toggle-on red"></i>
+    <!-- <i *ngIf="item?.required" (click)="item?.required=false" class="fa fa-toggle-on red"></i>
     <i *ngIf="!item.required" (click)="item.required=true" class="fa fa-toggle-off"></i> -->
-    <i *ngIf="item?.required" ></i>
-    <i *ngIf="!item?.required"></i>
     <span class="pull-right ucfirst">{{item?.ctrlType}}</span>
   </div>
   <div class="form-group">
     <label>ラベル</label>
-    <input class="form-control" type="text" [(ngModel)]="item.label" />
+    <input class="form-control" type="text"  [(ngModel)]= "item?.label"/>
   </div>
   <div class="form-group">
     <label>フィールド名</label>
-    <input class="form-control" type="text" [(ngModel)]="item.fieldName" />
+    <input class="form-control" type="text" [(ngModel)]="item?.fieldName"/>
   </div>
   <div class="form-group">
     <label>プレースホルダー</label>

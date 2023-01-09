@@ -1,3 +1,10 @@
+/*
+ * @Author: 王浩
+ * @Date: 2022-12-29 16:04:58
+ * @LastEditTime: 2023-01-06 14:34:44
+ * @FilePath: /tiger_client/src/main/webapp/app/auto-form/auto-form.module.ts
+ * @Description: Do not edit
+ */
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'app/shared/shared.module';
 import { autoFormState } from './auto-form.route';
