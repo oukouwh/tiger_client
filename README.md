@@ -266,7 +266,7 @@ npm audit fix
 
 ### Generator-cmd
 #### project path
-- `tiger_client` - Vsocode open project
+- `tiger_client` - Vscode open project
 - `Open Terminal` 
 ```
 npm link ../generator-jhipster
